@@ -14,17 +14,17 @@ export class AppBaseEntity implements EntitySubscriberInterface<any> {
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @CreateDateColumn()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @UpdateDateColumn()
   updatedAt: Date;
 
   @Column({ default: 'System' })
-  createdBy: Date;
+  createdBy: string;
 
   @Column({ default: 'System' })
-  updatedBy: Date;
+  updatedBy: string;
 
   beforeInsert(event: InsertEvent<any>) {
     console.log(`BEFORE ENTITY INSERTED: `, event.entity);
