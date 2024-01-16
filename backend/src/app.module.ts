@@ -27,6 +27,6 @@ import { ConfigModule } from '@nestjs/config';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware);
+    consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }

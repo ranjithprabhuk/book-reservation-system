@@ -12,22 +12,49 @@ export class BookService {
   ) {}
 
   create(createBookDto: CreateBookDto) {
-    return this.bookRepository.create(createBookDto);
+    try {
+      const response = this.bookRepository.save(createBookDto);
+      return response;
+    } catch (e) {
+      throw e;
+    }
   }
 
   findAll() {
-    return this.bookRepository.find({ where: [{ isActive: true }] });
+    try {
+      const response = this.bookRepository.find({
+        where: [{ isActive: true }],
+      });
+      return response;
+    } catch (e) {
+      throw e;
+    }
   }
 
-  findOne(id: number) {
-    return this.bookRepository.findOne({ where: [{ id }] });
+  findOne(id: string) {
+    try {
+      const response = this.bookRepository.findOne({ where: [{ id }] });
+      return response;
+    } catch (e) {
+      throw e;
+    }
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
-    return this.bookRepository.update(id, updateBookDto);
+  update(id: string, updateBookDto: UpdateBookDto) {
+    try {
+      const response = this.bookRepository.update({ id }, updateBookDto);
+      return response;
+    } catch (e) {
+      throw e;
+    }
   }
 
-  inActivate(id: number) {
-    return this.bookRepository.update(id, { isActive: false });
+  inActivate(id: string) {
+    try {
+      const response = this.bookRepository.update(id, { isActive: false });
+      return response;
+    } catch (e) {
+      throw e;
+    }
   }
 }

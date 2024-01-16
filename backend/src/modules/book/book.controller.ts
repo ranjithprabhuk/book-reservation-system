@@ -27,16 +27,16 @@ export class BookController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.bookService.findOne(+id);
+    return this.bookService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBookDto: UpdateBookDto) {
-    return this.bookService.update(+id, updateBookDto);
+    return this.bookService.update(id, updateBookDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.bookService.inActivate(+id);
+    return this.bookService.inActivate(id);
   }
 }

@@ -12,7 +12,7 @@ import {
 @Entity()
 export class AppBaseEntity implements EntitySubscriberInterface<any> {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @CreateDateColumn()
   createdAt: Date;
