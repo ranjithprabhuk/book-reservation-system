@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Book } from './entities/book.entity';
@@ -33,6 +33,11 @@ export class BookService {
 
   findOne(id: string) {
     try {
+      if (!id) {
+        throw new BadRequestException(
+          'Book ID is required to get the book information',
+        );
+      }
       const response = this.bookRepository.findOne({ where: [{ id }] });
       return response;
     } catch (e) {
@@ -42,6 +47,11 @@ export class BookService {
 
   update(id: string, updateBookDto: UpdateBookDto) {
     try {
+      if (!id) {
+        throw new BadRequestException(
+          'Book ID is required to update the value',
+        );
+      }
       const response = this.bookRepository.update({ id }, updateBookDto);
       return response;
     } catch (e) {
@@ -51,6 +61,9 @@ export class BookService {
 
   inActivate(id: string) {
     try {
+      if (!id) {
+        throw new BadRequestException('Book ID is required to inactivate it');
+      }
       const response = this.bookRepository.update(id, { isActive: false });
       return response;
     } catch (e) {
