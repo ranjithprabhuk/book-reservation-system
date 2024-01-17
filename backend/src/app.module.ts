@@ -10,6 +10,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { User } from './modules/user/entities/user.entity';
 import { ReservationModule } from './modules/reservation/reservation.module';
+import { Reservation } from './modules/reservation/entities/reservation.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { ReservationModule } from './modules/reservation/reservation.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: 'test1',
-      entities: [Book, User],
+      entities: [Book, User, Reservation],
       synchronize: true,
     }),
     BookModule,
