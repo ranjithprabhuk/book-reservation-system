@@ -14,6 +14,11 @@ export class AuthService {
   ) {}
 
   async signup(signupDto: SignUpDto) {
+    const isUsernameAvailable = await this.isUsernameAvailable(signupDto.username);
+    if (!isUsernameAvailable) {
+      throw new ValidationError('Sorry, Username is already taken.');
+    }
+
     const saltOrRounds = parseInt(process.env.SALT_ROUND) || 10;
     const hashedPassword = await bcrypt.hash(signupDto.password, saltOrRounds);
     const result = await this._userService.create({
@@ -48,6 +53,11 @@ export class AuthService {
         expiresIn: '30d',
       }),
     };
+  }
+
+  private async isUsernameAvailable(username: string) {
+    const userInfo = await this._userService.findUserByUsername(username);
+    return !userInfo?.id;
   }
 
   async updatePassword(
