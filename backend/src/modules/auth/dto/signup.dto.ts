@@ -11,8 +11,5 @@ export class SignUpDto {
   username: string;
 
   @ApiProperty()
-  isActive: boolean;
-
-  @ApiProperty()
   password: string;
 }

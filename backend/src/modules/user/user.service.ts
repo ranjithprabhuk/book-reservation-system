@@ -25,7 +25,7 @@ export class UserService {
         !createUserDto.password
       ) {
         throw new ValidationError(
-          'Name, Description and ISBN values are required to add a user',
+          'Firstname, Lastname, Username and Password values are required to create a user',
         );
       }
       const response = this._userRepository.save(createUserDto);
@@ -51,9 +51,9 @@ export class UserService {
       const queryBuilder = this._userRepository.createQueryBuilder('user');
       const whereClause = pageOptionsDto.searchText
         ? SqlUtility.getSearchTextWhereClause('user', [
-            'name',
-            'description',
-            'ISBN',
+            'firstName',
+            'lastName',
+            'username',
           ])
         : '';
 
@@ -97,7 +97,10 @@ export class UserService {
           'Username is required to get the user information',
         );
       }
-      const response = this._userRepository.findOne({ where: [{ username }] });
+      const response = this._userRepository.findOne({
+        where: [{ username }],
+        select: ['password', 'username', 'id', 'role'],
+      });
       return response;
     } catch (e) {
       throw e;

@@ -8,6 +8,7 @@ import { Book } from './modules/book/entities/book.entity';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { User } from './modules/user/entities/user.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { AuthModule } from './modules/auth/auth.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: 'test1',
-      entities: [Book],
+      entities: [Book, User],
       synchronize: true,
     }),
     BookModule,

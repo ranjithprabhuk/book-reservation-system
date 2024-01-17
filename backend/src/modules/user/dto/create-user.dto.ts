@@ -11,8 +11,5 @@ export class CreateUserDto {
   username: string;
 
   @ApiProperty()
-  isActive: boolean;
-
-  @ApiProperty()
   password: string;
 }

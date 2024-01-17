@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Request,
+  Res,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/signup.dto';
@@ -19,14 +20,31 @@ export class AuthController {
 
   @Post('/signup')
   @HttpCode(HttpStatus.OK)
-  async createUser(@Body() signupDto: SignUpDto) {
-    return this._authService.signup(signupDto);
+  async createUser(
+    @Body() signupDto: SignUpDto,
+    @Res({ passthrough: true }) response,
+  ) {
+    const result = await this._authService.signup(signupDto);
+    response.cookie('jwt', result.access_token, { httpOnly: true });
+    response.cookie('isLoggedIn', true, { httpOnly: false });
+
+    return 'Success';
   }
 
   @Post('/login')
   @HttpCode(HttpStatus.OK)
-  async login(@Body() loginDto: LoginDto) {
-    return this._authService.login(loginDto.username, loginDto.password);
+  async login(
+    @Body() loginDto: LoginDto,
+    @Res({ passthrough: true }) response,
+  ) {
+    const result = await this._authService.login(
+      loginDto.username,
+      loginDto.password,
+    );
+
+    response.cookie('jwt', result.access_token, { httpOnly: true });
+    response.cookie('isLoggedIn', true, { httpOnly: false });
+    return 'Success';
   }
 
   @Post('/update-password')
@@ -35,7 +53,6 @@ export class AuthController {
     @Body() updatePasswordDto: UpdatePasswordDto,
     @Request() req,
   ) {
-    console.log('request >>>', req);
     return this._authService.updatePassword(
       req.user,
       updatePasswordDto.oldPassword,

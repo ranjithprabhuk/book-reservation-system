@@ -4,6 +4,7 @@ import { SignUpDto } from './dto/signup.dto';
 import { UserService } from '../user/user.service';
 import { ValidationError } from 'src/shared/exceptions/validation.exception';
 import { JwtService } from '@nestjs/jwt';
+import { UpdateUserDto } from '../user/dto/update-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -37,17 +38,15 @@ export class AuthService {
       );
     }
 
-    if (user && passwordValid) {
-      return user;
-    }
-
     return this.generateToken(user);
   }
 
   private generateToken(user: any) {
-    const payload = { username: user.username, sub: user.id };
+    const payload = { user: user.username, sub: user.id, role: user.role };
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload, {
+        expiresIn: '30d',
+      }),
     };
   }
 
@@ -75,12 +74,8 @@ export class AuthService {
     this._userService.update(user.id, {
       ...user,
       password: updatedHasedPassword,
-    });
+    } as UpdateUserDto);
 
-    if (user && passwordValid) {
-      return user;
-    }
-
-    return this.generateToken(user);
+    return 'Success';
   }
 }

@@ -1,6 +1,11 @@
 import { Column, Entity } from 'typeorm';
 import { AppBaseEntity } from 'src/shared/entities/base.entity';
 
+export enum Role {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+}
+
 @Entity()
 export class User extends AppBaseEntity {
   @Column()
@@ -14,6 +19,9 @@ export class User extends AppBaseEntity {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @Column({ default: Role.USER })
+  role: string;
 
   @Column({ select: false })
   password: string;
