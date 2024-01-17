@@ -10,8 +10,10 @@ import {
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('book')
+@ApiTags('Book Management')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
