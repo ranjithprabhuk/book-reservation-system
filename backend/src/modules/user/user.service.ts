@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
@@ -31,7 +31,7 @@ export class UserService {
       const response = this._userRepository.save(createUserDto);
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -42,7 +42,7 @@ export class UserService {
       });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -72,7 +72,7 @@ export class UserService {
 
       return new PageDto(entities, pageMetaDto);
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -86,7 +86,7 @@ export class UserService {
       const response = this._userRepository.findOne({ where: [{ id }] });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -103,7 +103,7 @@ export class UserService {
       });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -115,7 +115,7 @@ export class UserService {
       const response = this._userRepository.update({ id }, updateUserDto);
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -127,7 +127,7 @@ export class UserService {
       const response = this._userRepository.update(id, { isActive: false });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 }

@@ -14,7 +14,9 @@ export class AuthService {
   ) {}
 
   async signup(signupDto: SignUpDto) {
-    const isUsernameAvailable = await this.isUsernameAvailable(signupDto.username);
+    const isUsernameAvailable = await this.isUsernameAvailable(
+      signupDto.username,
+    );
     if (!isUsernameAvailable) {
       throw new ValidationError('Sorry, Username is already taken.');
     }

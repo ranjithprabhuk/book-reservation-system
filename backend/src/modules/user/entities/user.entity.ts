@@ -1,5 +1,6 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { AppBaseEntity } from 'src/shared/entities/base.entity';
+import { Reservation } from 'src/modules/reservation/entities/reservation.entity';
 
 export enum Role {
   ADMIN = 'ADMIN',
@@ -25,4 +26,7 @@ export class User extends AppBaseEntity {
 
   @Column({ select: false })
   password: string;
+
+  @OneToMany(() => Reservation, (bookReservation) => bookReservation.user)
+  bookReservations: Reservation[];
 }

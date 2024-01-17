@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Book } from './entities/book.entity';
@@ -30,7 +30,7 @@ export class BookService {
       const response = this._bookRepository.save(createBookDto);
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -41,7 +41,7 @@ export class BookService {
       });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -71,7 +71,7 @@ export class BookService {
 
       return new PageDto(entities, pageMetaDto);
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -85,7 +85,7 @@ export class BookService {
       const response = this._bookRepository.findOne({ where: [{ id }] });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -97,7 +97,7 @@ export class BookService {
       const response = this._bookRepository.update({ id }, updateBookDto);
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 
@@ -109,7 +109,7 @@ export class BookService {
       const response = this._bookRepository.update(id, { isActive: false });
       return response;
     } catch (e) {
-      throw e;
+      throw new InternalServerErrorException(e);
     }
   }
 }
