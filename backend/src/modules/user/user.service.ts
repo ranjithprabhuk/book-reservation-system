@@ -90,6 +90,20 @@ export class UserService {
     }
   }
 
+  findUserByUsername(username: string) {
+    try {
+      if (!username) {
+        throw new ValidationError(
+          'Username is required to get the user information',
+        );
+      }
+      const response = this._userRepository.findOne({ where: [{ username }] });
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+
   update(id: string, updateUserDto: UpdateUserDto) {
     try {
       if (!id) {
