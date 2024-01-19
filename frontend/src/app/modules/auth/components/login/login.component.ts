@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LocalStorageService } from '../../../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private _authService: AuthService,
     private _formBuilder: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _localStorageService: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -46,6 +48,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe((response) => {
           console.log('asdasda', response);
           if (response && response.username) {
+            // persist the user details for further usage
+            this._localStorageService.setInfo('user', response);
             // navigate to books
             this._router.navigateByUrl('/app/book');
           } else {
