@@ -45,7 +45,7 @@ export class AuthService {
       );
     }
 
-    return this.generateToken(user);
+    return { user, ...this.generateToken(user) };
   }
 
   private generateToken(user: any) {

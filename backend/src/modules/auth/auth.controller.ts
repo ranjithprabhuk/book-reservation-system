@@ -37,14 +37,15 @@ export class AuthController {
     @Body() loginDto: LoginDto,
     @Res({ passthrough: true }) response,
   ) {
-    const result = await this._authService.login(
+    const { user, access_token } = await this._authService.login(
       loginDto.username,
       loginDto.password,
     );
+    const { password, ...rest } = user;
 
-    response.cookie('jwt', result.access_token, { httpOnly: true });
+    response.cookie('jwt', access_token, { httpOnly: true });
     response.cookie('isLoggedIn', true, { httpOnly: false });
-    return 'Success';
+    return { ...rest };
   }
 
   @Post('/update-password')

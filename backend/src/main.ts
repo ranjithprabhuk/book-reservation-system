@@ -18,6 +18,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalFilters(new TypeOrmFilter());
+  app.enableCors({ origin: '*' });
 
   await app.listen(3000);
 }

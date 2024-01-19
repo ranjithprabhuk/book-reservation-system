@@ -1,8 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 
 // If you want to override variables do it here
 @import "variables";
 
+/* You can add global styles to this file, and also import other style files */
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 // If you want to add something do it here
 @import "custom";
+
+

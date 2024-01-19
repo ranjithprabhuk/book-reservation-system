@@ -8,15 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
+import { ToastComponent } from './modules/shared/toast/toast.component';
 
 // modules
 import { AuthModule } from './modules/auth/auth.module';
 import { BookModule } from './modules/book/book.module';
 import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, BaseLayoutComponent],
+  declarations: [AppComponent, BaseLayoutComponent, ToastComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -26,6 +28,7 @@ import { SharedModule } from './modules/shared/shared.module';
     BookModule,
     UserModule,
     SharedModule,
+    NgbToastModule,
   ],
   providers: [
     {

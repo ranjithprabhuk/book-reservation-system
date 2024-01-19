@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: '<div><app-toast></app-toast><router-outlet></router-outlet></div>',
 })
 export class AppComponent implements OnInit {
   title = 'Online Book Reservation';

@@ -1,1 +1,1463 @@
-<div>Book List Page</div>
+<div class="container pb-5 mb-2 mb-md-4">
+  <!-- Toolbar-->
+  <div class="bg-light shadow-lg rounded-3 mb-4" style="margin-top: -35px">
+    <div class="d-flex">
+      <!-- Search-->
+      <div class="w-100">
+        <div class="input-group ms-2 pe-sm-3">
+          <input
+            class="form-control bg-transparent rounded-0 border-0 shadow-none ps-5 py-4"
+            type="text"
+            placeholder="Search collection, title or user..."
+          /><i
+            class="ci-search position-absolute top-50 start-0 translate-middle-y zindex-5 ms-3 fs-lg text-muted"
+          ></i>
+        </div>
+      </div>
+      <!-- Sorting-->
+      <div class="flex-shrink-0 border-start">
+        <div class="dropdown">
+          <button
+            class="btn border-0 p-4 fw-medium"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span class="d-sm-inline d-none">Recently added</span
+            ><i class="ci-arrow-down ms-sm-2 fs-sm"></i>
+          </button>
+          <div class="dropdown-menu w-100">
+            <a class="dropdown-item active" href="#" style="white-space: normal"
+              >Recently added</a
+            ><a class="dropdown-item" href="#" style="white-space: normal"
+              >Oldest</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="d-md-flex d-none">
+        <!-- Pages-->
+        <div class="border-start">
+          <div class="p-4 fs-md text-nowrap">Pages 1/5</div>
+        </div>
+        <!-- Back-->
+        <div class="border-start">
+          <a class="btn border-0 p-4 fw-medium" href="#"
+            ><i class="ci-arrow-left"></i
+          ></a>
+        </div>
+        <!-- Forward-->
+        <div class="border-start">
+          <a class="btn border-0 p-4 fw-medium" href="#"
+            ><i class="ci-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Filters-->
+  <div
+    class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-between pt-lg-3"
+  >
+    <div class="d-flex flex-wrap">
+      <!-- Categories-->
+      <div class="dropdown mb-lg-3 mb-2 me-lg-3 me-2">
+        <button
+          class="btn btn-outline-accent dropdown-toggle w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <div class="dropdown-menu mt-lg-2 mt-1" style="min-width: 260px">
+          <div class="widget px-3">
+            <ul class="widget-list list-unstyled">
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="all" />
+                  <label class="form-check-label" for="all">All artworks</label>
+                </div>
+                <span class="fs-xs text-muted">498</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="premium"
+                  />
+                  <label class="form-check-label" for="premium">Premium</label>
+                </div>
+                <span class="fs-xs text-muted">25</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="art" />
+                  <label class="form-check-label" for="art">Art</label>
+                </div>
+                <span class="fs-xs text-muted">112</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="photography"
+                  />
+                  <label class="form-check-label" for="photography"
+                    >Photography</label
+                  >
+                </div>
+                <span class="fs-xs text-muted">93</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="music" />
+                  <label class="form-check-label" for="music">Music</label>
+                </div>
+                <span class="fs-xs text-muted">48</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gaming" />
+                  <label class="form-check-label" for="gaming">Gaming</label>
+                </div>
+                <span class="fs-xs text-muted">82</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="sports" />
+                  <label class="form-check-label" for="sports">Sports</label>
+                </div>
+                <span class="fs-xs text-muted">51</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="collections"
+                  />
+                  <label class="form-check-label" for="collections"
+                    >Collections</label
+                  >
+                </div>
+                <span class="fs-xs text-muted">11</span>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="utility"
+                  />
+                  <label class="form-check-label" for="utility">Utility</label>
+                </div>
+                <span class="fs-xs text-muted">24</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Sale Types-->
+      <div class="dropdown mb-lg-3 mb-2 me-lg-3 me-2">
+        <button
+          class="btn btn-outline-accent dropdown-toggle w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Sale Types
+        </button>
+        <div class="dropdown-menu mt-lg-2 mt-1" style="min-width: 260px">
+          <div class="widget px-3">
+            <ul class="widget-list list-unstyled">
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="fixed-price"
+                  />
+                  <label class="form-check-label" for="fixed-price"
+                    >Fixed Price</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="live-auction"
+                  />
+                  <label class="form-check-label" for="live-auction"
+                    >Live auction</label
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Price range-->
+      <div class="dropdown mb-lg-3 mb-2 me-lg-3 me-2">
+        <button
+          class="btn btn-outline-accent dropdown-toggle w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Price range
+        </button>
+        <div class="dropdown-menu mt-lg-2 mt-1 p-3" style="min-width: 260px">
+          <form>
+            <select class="form-select form-select-sm mb-3">
+              <option selected="" disabled="">ETH</option>
+              <option>BNB</option>
+              <option>BUSD</option>
+            </select>
+            <div class="d-flex align-items-center">
+              <div class="w-50">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  placeholder="From"
+                />
+              </div>
+              <span class="d-inline-block mx-2">–</span>
+              <div class="w-50">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  placeholder="To"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Collections-->
+      <div class="dropdown mb-lg-3 mb-2 me-lg-3 me-2">
+        <button
+          class="btn btn-outline-accent dropdown-toggle w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Collections
+        </button>
+        <div class="dropdown-menu mt-lg-2 mt-1" style="min-width: 260px">
+          <div class="widget px-3">
+            <ul class="widget-list list-unstyled">
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="contemporary-art-collage"
+                  />
+                  <label class="form-check-label" for="contemporary-art-collage"
+                    >Contemporary art collage</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="3d-digital-abstract-art"
+                  />
+                  <label class="form-check-label" for="3d-digital-abstract-art"
+                    >3D digital abstract art</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="clone-x-mini-monsters"
+                  />
+                  <label class="form-check-label" for="clone-x-mini-monsters"
+                    >Clone X Mini Monsters</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="ocean-and-sky"
+                  />
+                  <label class="form-check-label" for="ocean-and-sky"
+                    >Ocean and sky</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="aesthetic-art-collage"
+                  />
+                  <label class="form-check-label" for="aesthetic-art-collage"
+                    >Aesthetic art collage</label
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Creators-->
+      <div class="dropdown mb-lg-3 mb-2 me-lg-3 me-2">
+        <button
+          class="btn btn-outline-accent dropdown-toggle w-100"
+          type="button"
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Creators
+        </button>
+        <div class="dropdown-menu mt-lg-2 mt-1" style="min-width: 260px">
+          <div class="widget px-3">
+            <ul class="widget-list list-unstyled">
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="foxnet_creator"
+                  />
+                  <label class="form-check-label" for="foxnet_creator"
+                    >foxnet_creator</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="YunusKullebi"
+                  />
+                  <label class="form-check-label" for="YunusKullebi"
+                    >YunusKullebi</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="lulucollages"
+                  />
+                  <label class="form-check-label" for="lulucollages"
+                    >lulucollages</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="DistroKid"
+                  />
+                  <label class="form-check-label" for="DistroKid"
+                    >DistroKid</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="Sharan_Pagadala"
+                  />
+                  <label class="form-check-label" for="Sharan_Pagadala"
+                    >Sharan_Pagadala</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="Simonlee"
+                  />
+                  <label class="form-check-label" for="Simonlee"
+                    >Simonlee</label
+                  >
+                </div>
+              </li>
+              <li
+                class="d-flex justify-content-between align-items-center mb-1"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="Shubham_Dhage"
+                  />
+                  <label class="form-check-label" for="Shubham_Dhage"
+                    >Shubham_Dhage</label
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Total-->
+    <div class="mb-3 fs-sm text-muted">1240 results</div>
+  </div>
+  <!-- Products grid-->
+  <div
+    class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-lg-4 pt-2"
+  >
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/01.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 12:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >3d aesthetics with shapes</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.156 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 595.76)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/01.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >foxnet_creator</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/02.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 09:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Ocean and sky</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.5 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,000.55)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/02.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >YunusKullebi</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-buy.html"
+            ><img src="img/nft/catalog/03.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-buy.html"
+              >Aesthetic art collage</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.6 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,400.65)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/03.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >lulucollages</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-buy.html"
+            ><img src="img/nft/catalog/04.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-buy.html"
+              >Astronaut surrounded by lights</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.1 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 400.19)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/04.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >DistroKid</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-buy.html"
+            ><img src="img/nft/catalog/05.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-buy.html"
+              >Aesthetic art collage</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.6 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,400.65)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/05.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >Sharan_Pagadala</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/06.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 12:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Ocean and sky</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.5 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,000.55)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/06.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >Simonlee</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/07.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 12:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >3d aesthetics with shapes</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.156 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 595.76)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/07.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >Shubham_Dhage</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/08.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Astronaut surrounded by lights</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.1 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 400.19)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/08.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >DistroKid</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/09.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >3d aesthetics with shapes</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.156 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 595.76)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/09.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >shubham_dhage</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/10.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 12:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Ocean and sky</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.5 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,000.55)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/10.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >MihailGreen</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-buy.html"
+            ><img src="img/nft/catalog/11.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-buy.html"
+              >Aesthetic art collage</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.6 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,400.65)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/11.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >lulucollages</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/12.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 09:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Astronaut surrounded by lights</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.1 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 400.19)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/12.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >Sharan_Pagadala</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/13.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >3d aesthetics with shapes</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.156 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 595.76)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/13.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >ZeniconStudio</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/14.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Ocean and sky</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Current bid:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.5 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,000.55)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/14.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >42Labs</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/15.jpg" alt="Product image"
+          /></a>
+          <!-- Countdown timer-->
+          <div
+            class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"
+          >
+            <i class="ci-time me-1"></i>
+            <div
+              class="countdown d-inline"
+              data-countdown="12/31/2022 09:00:00 PM"
+            >
+              <span class="countdown-hours mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-minutes mb-0 me-0"
+                ><span class="countdown-value">0</span
+                ><span class="countdown-label fs-lg">:</span></span
+              ><span class="countdown-seconds mb-0 me-0"
+                ><span class="countdown-value">0</span></span
+              >
+            </div>
+          </div>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Aesthetic art collage</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.6 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,400.65)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/15.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >Simonlee</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- Product-->
+    <div class="col mb-2">
+      <article class="card h-100 border-0 shadow">
+        <div class="card-img-top position-relative overflow-hidden">
+          <a class="d-block" href="nft-single-auction-live.html"
+            ><img src="img/nft/catalog/16.jpg" alt="Product image"
+          /></a>
+          <!-- Wishlist button-->
+          <button
+            class="btn-wishlist btn-sm position-absolute top-0 end-0"
+            type="button"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            style="margin: 12px"
+            aria-label="Add to Favorites"
+            data-bs-original-title="Add to Favorites"
+          >
+            <i class="ci-heart"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="product-title mb-2 fs-base">
+            <a class="d-block text-truncate" href="nft-single-auction-live.html"
+              >Astronaut surrounded by lights</a
+            >
+          </h3>
+          <span class="fs-sm text-muted">Reserve price:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <h4 class="mt-1 mb-0 fs-base text-darker">0.1 ETH</h4>
+            <span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 400.19)</span>
+          </div>
+        </div>
+        <div class="card-footer mt-n1 py-0 border-0">
+          <div
+            class="d-flex align-items-center position-relative mb-1 py-3 border-top"
+          >
+            <img
+              class="me-2 rounded-circle"
+              src="img/nft/catalog/avatars/16.png"
+              width="32"
+              alt="Avatar"
+            /><a
+              class="nav-link-style fs-sm stretched-link"
+              href="nft-vendor.html"
+              >distrokid</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <hr class="mt-4 mb-3" />
+  <!-- Pagination-->
+  <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#"><i class="ci-arrow-left me-2"></i>Prev</a>
+      </li>
+    </ul>
+    <ul class="pagination">
+      <li class="page-item d-sm-none">
+        <span class="page-link page-link-static">1 / 5</span>
+      </li>
+      <li class="page-item active d-none d-sm-block" aria-current="page">
+        <span class="page-link"
+          >1<span class="visually-hidden">(current)</span></span
+        >
+      </li>
+      <li class="page-item d-none d-sm-block">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item d-none d-sm-block">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item d-none d-sm-block">
+        <a class="page-link" href="#">4</a>
+      </li>
+      <li class="page-item d-none d-sm-block">
+        <a class="page-link" href="#">5</a>
+      </li>
+    </ul>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next"
+          >Next<i class="ci-arrow-right ms-2"></i
+        ></a>
+      </li>
+    </ul>
+  </nav>
+</div>
