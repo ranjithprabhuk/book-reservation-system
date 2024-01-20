@@ -9,6 +9,10 @@ import { Book, Order, SearchBookInput } from '../../interface/book.interface';
 import { Subscription } from 'rxjs';
 import { BookService } from '../../book.service';
 import { LocalStorageService } from 'src/app/modules/shared/services/local-storage.service';
+import {
+  ToastService,
+  ToastType,
+} from 'src/app/modules/shared/toast/toast.service';
 
 @Component({
   selector: 'app-booklist',
@@ -21,11 +25,12 @@ export class BookListComponent implements OnInit, OnDestroy {
     order: Order.ASC,
     orderBy: 'name',
     page: 1,
-    take: 10,
+    take: 12,
     pageCount: 1,
     itemCount: 1,
   };
   public books$: Subscription | null = null;
+  public inActivateBook$: Subscription | null = null;
   public books: Book[] = [];
   public bookSearchInProgress: boolean = false;
 
@@ -34,7 +39,8 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   constructor(
     private _bookService: BookService,
-    private _localStorageService: LocalStorageService
+    private _localStorageService: LocalStorageService,
+    private _toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +64,24 @@ export class BookListComponent implements OnInit, OnDestroy {
     }
   }
 
+  public inactivateBook(bookId: string) {
+    this.bookSearchInProgress = true;
+    if (this.bookPaginationInfo) {
+      this.inActivateBook$ = this._bookService
+        .inactivateBook(bookId)
+        .subscribe((res: any) => {
+          if (res) {
+            this.searchBooksInfo();
+            this._toastService.showToast(
+              'Successfully deleted!',
+              'Book information deleted successfully',
+              ToastType.SUCCESS
+            );
+          }
+        });
+    }
+  }
+
   private getUserInfo() {
     this.user$ = this._localStorageService.myData$.subscribe((res) => {
       if (res && res.key === 'user' && res.value) {
@@ -73,5 +97,6 @@ export class BookListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.books$?.unsubscribe();
     this.user$?.unsubscribe();
+    this.inActivateBook$?.unsubscribe();
   }
 }

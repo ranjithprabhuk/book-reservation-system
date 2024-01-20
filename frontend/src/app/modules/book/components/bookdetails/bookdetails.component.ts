@@ -121,7 +121,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
             response.name + ' added successfully',
             ToastType.SUCCESS
           );
-          this._router.navigateByUrl('/app/book');
+          this._router.navigateByUrl('/app/book/' + response.id);
         } else {
           // reset the form
           this.submitted = false;

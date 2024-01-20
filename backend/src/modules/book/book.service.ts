@@ -59,10 +59,11 @@ export class BookService {
       queryBuilder
         .select()
         .where(whereClause)
+        .andWhere('book.isActive = true')
         .orderBy(`book.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)
-        .setParameters({ searchText: `%${pageOptionsDto.searchText}%` });
+        .setParameters({ searchText: `%${pageOptionsDto.searchText}%`, isActive: true });
 
       const itemCount = await queryBuilder.getCount();
       const { entities } = await queryBuilder.getRawAndEntities();

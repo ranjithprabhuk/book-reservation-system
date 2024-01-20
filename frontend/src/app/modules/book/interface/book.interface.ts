@@ -1,6 +1,7 @@
 import { User } from '../../user/interface/user.interface';
 
 export interface Book {
+  id: string;
   name: string;
   description: string;
   ISBN: string;

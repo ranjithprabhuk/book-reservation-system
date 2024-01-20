@@ -17,6 +17,13 @@
           >
             Search
           </button>
+          <button
+            type="button"
+            class="btn btn-link"
+            (click)="bookPaginationInfo.searchText = ''; searchBooksInfo()"
+          >
+            Clear
+          </button>
         </div>
       </div>
     </div>
@@ -59,7 +66,11 @@
               <button type="button" class="btn btn-primary">Reserve</button>
             </div>
             <div *ngIf="isAdmin">
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="inactivateBook(book.id)"
+              >
                 Delete
               </button>
             </div>
