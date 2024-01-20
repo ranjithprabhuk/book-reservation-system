@@ -99,7 +99,7 @@ export class UserService {
       }
       const response = this._userRepository.findOne({
         where: [{ username }],
-        select: ['password', 'username', 'id', 'role'],
+        select: ['password', 'username', 'id', 'role', 'firstName', 'lastName'],
       });
       return response;
     } catch (e) {

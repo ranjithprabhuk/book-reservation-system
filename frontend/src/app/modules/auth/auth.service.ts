@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
-import { User } from './interface/user.interface';
+import { User } from '../user/interface/user.interface';
 import { environment } from '../../../environments/environment';
 import { LoginInput } from './interface/login.interface';
 import { RegisterInput } from './interface/register.interface';
