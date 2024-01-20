@@ -10,6 +10,7 @@ import {
   ToastService,
   ToastType,
 } from 'src/app/modules/shared/toast/toast.service';
+import { User } from 'src/app/modules/user/interface/user.interface';
 
 @Component({
   selector: 'app-bookdetails',
@@ -30,6 +31,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   public isApiCallInProgress = false;
   public isNew = true;
   public bookId: string = '';
+  public book: Book | null = null;
 
   constructor(
     private _bookService: BookService,
@@ -132,6 +134,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getBook() {
+    this.isApiCallInProgress = true;
     this.book$ = this._bookService
       .getBook(this.bookId)
       .subscribe((response) => {
@@ -154,11 +157,14 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   private setBookFormValues(bookInfo: Book) {
+    this.book = bookInfo;
+    console.log('bookj', this.book);
     const { name, description, ISBN, author } = bookInfo;
     this.bookForm?.setValue({ name, description, ISBN, author });
     if (!this.isAdmin) {
       this.bookForm?.disable();
     }
+    this.isApiCallInProgress = false;
   }
 
   onReset() {

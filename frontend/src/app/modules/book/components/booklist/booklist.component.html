@@ -62,8 +62,14 @@
           <div
             class="d-flex align-items-center position-relative mb-1 py-3 border-top justify-content-between"
           >
-            <div *ngIf="!isAdmin">
-              <button type="button" class="btn btn-primary">Reserve</button>
+            <div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="'/app/book/' + book.id"
+              >
+                {{ isAdmin ? "View Details" : "Reserve" }}
+              </button>
             </div>
             <div *ngIf="isAdmin">
               <button

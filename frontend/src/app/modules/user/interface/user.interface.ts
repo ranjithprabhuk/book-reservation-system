@@ -1,6 +1,7 @@
 import { Order } from '../../book/interface/book.interface';
 
 export interface User {
+  id: string;
   firstName: string;
   lastName: string;
   username: string;

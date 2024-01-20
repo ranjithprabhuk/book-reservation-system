@@ -63,7 +63,10 @@ export class BookService {
         .orderBy(`book.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)
-        .setParameters({ searchText: `%${pageOptionsDto.searchText}%`, isActive: true });
+        .setParameters({
+          searchText: `%${pageOptionsDto.searchText}%`,
+          isActive: true,
+        });
 
       const itemCount = await queryBuilder.getCount();
       const { entities } = await queryBuilder.getRawAndEntities();
@@ -83,8 +86,13 @@ export class BookService {
           'Book ID is required to get the book information',
         );
       }
-      const response = this._bookRepository.findOne({ where: [{ id }] });
-      return response;
+      const queryBuilder = this._bookRepository.createQueryBuilder('book');
+      // const response = this._bookRepository.findOne({ where: [{ id }] });
+      return queryBuilder
+        .leftJoinAndSelect('book.bookReservations', 'reservations')
+        .where('book.id = :id', { id })
+        .getOne();
+      // return response;
     } catch (e) {
       throw new InternalServerErrorException(e);
     }

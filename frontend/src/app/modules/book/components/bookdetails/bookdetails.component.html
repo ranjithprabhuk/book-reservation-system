@@ -113,13 +113,16 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="!isNew">
+                <div *ngIf="!isNew && isAdmin">
                   <a routerLink="/app/book/new"> Add Book </a>
                 </div>
               </div>
             </div>
           </form>
         </div>
+      </div>
+      <div class="d-flex align-items-center col-md-6 col-lg-6 text-black">
+        <app-reserve-book [book]="book"></app-reserve-book>
       </div>
     </div>
   </div>

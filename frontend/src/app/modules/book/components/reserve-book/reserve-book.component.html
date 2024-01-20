@@ -1,0 +1,31 @@
+<ng-template #dayTemplate let-date let-disabled="disabled">
+  <span
+    class="custom-day"
+    [ngbTooltip]="getTooltip(date)"
+    container="body"
+    [class.holiday]="!!isHoliday(date)"
+    [class.disabled]="disabled || isWeekend(date)"
+    [class.range]="isRange(date)"
+    [class.faded]="isHovered(date) || isInside(date)"
+    (mouseenter)="hoveredDate = date"
+    (mouseleave)="hoveredDate = null"
+  >
+    {{ date.day }}
+  </span>
+</ng-template>
+
+<ngb-datepicker
+  (dateSelect)="onDateSelection($event)"
+  [dayTemplate]="dayTemplate"
+  [markDisabled]="markDisabled"
+  [showWeekNumbers]="true"
+  [minDate]="today"
+  outsideDays="hidden"
+  [displayMonths]="2"
+/>
+<div class="d-flex mt-5 justify-content-end">
+  <button class="btn btn-primary" (click)="reserveBook()">Reserve Book</button>
+</div>
+
+<pre>From: {{ fromDate | json }} </pre>
+<pre>To: {{ toDate | json }} </pre>

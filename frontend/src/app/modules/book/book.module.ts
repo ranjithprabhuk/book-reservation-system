@@ -4,14 +4,18 @@ import { CommonModule } from '@angular/common';
 import { BookRoutingModule } from './book-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { BookService } from './book.service';
+import { ReservationService } from './reservation.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BookListComponent } from './components/booklist/booklist.component';
 import { BookDetailsComponent } from './components/bookdetails/bookdetails.component';
+import { ReserveBookComponent } from './components/reserve-book/reserve-book.component';
 import {
+  NgbDateNativeAdapter,
   NgbDatepickerModule,
   NgbModalModule,
   NgbPagination,
+  NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -24,9 +28,10 @@ import {
     NgbPagination,
     NgbDatepickerModule,
     NgbModalModule,
-    FormsModule
+    FormsModule,
+    NgbTooltipModule,
   ],
-  declarations: [BookListComponent, BookDetailsComponent],
-  providers: [BookService],
+  declarations: [BookListComponent, BookDetailsComponent, ReserveBookComponent],
+  providers: [BookService, ReservationService, NgbDateNativeAdapter],
 })
 export class BookModule {}

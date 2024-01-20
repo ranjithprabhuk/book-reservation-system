@@ -10,5 +10,6 @@ import { UserModule } from '../user/user.module';
   imports: [UserModule, TypeOrmModule.forFeature([Book])],
   controllers: [BookController],
   providers: [BookService, JwtService],
+  exports: [BookService],
 })
 export class BookModule {}
