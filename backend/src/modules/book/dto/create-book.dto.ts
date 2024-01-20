@@ -9,4 +9,7 @@ export class CreateBookDto {
 
   @ApiProperty()
   ISBN: string;
+
+  @ApiProperty()
+  author: string;
 }

@@ -6,13 +6,12 @@ import { ToastService } from './toast.service';
   template: `
     <ng-container *ngIf="toastService.toast$ | async as toast">
       <div
-        [class]="toast.type + ' p-2'"
-        style="position: absolute; top: 0; right: 0;"
+        [class]="toast.type + ' p-2 toast-container'"
       >
         <ngb-toast
           class="toast"
           [animation]="true"
-          [delay]="500000"
+          [delay]="5000"
           [header]="toast.title"
           [autohide]="true"
           (hidden)="toastService.hideToast()"

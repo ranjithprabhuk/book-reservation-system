@@ -4,20 +4,15 @@ import { Observable } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { ToastService } from '../shared/toast/toast.service';
-import {
-  Book,
-  CreateBookInput,
-  SearchBookInput,
-} from './interface/book.interface';
+import { SearchUserInput, User } from './interface/user.interface';
 
 @Injectable()
-export class BookService {
-  private apiurl = environment.apiHostName + 'book';
+export class UserService {
+  private apiurl = environment.apiHostName + 'user';
   private httpOptions = {
     headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json'),
-    withCredentials: true,
   };
 
   constructor(private _http: HttpClient, private _toastService: ToastService) {}
@@ -27,71 +22,64 @@ export class BookService {
     return Promise.resolve(error);
   };
 
-  searchBooks(searchPayload: SearchBookInput): Observable<Book[]> {
+  searcUsers(searchPayload: SearchUserInput): Observable<User> {
     const url = `${this.apiurl}/search?${this.getSearchQuery(searchPayload)}`;
-    return this._http.get<Book[]>(url, this.httpOptions).pipe(
+    return this._http.get<User>(url).pipe(
       tap((data) => data),
       catchError(this.handleError)
     );
   }
 
-  private getSearchQuery(paylaod: SearchBookInput) {
+  private getSearchQuery(paylaod: SearchUserInput) {
     let query = '';
 
     if (paylaod.searchText) {
-      query += `searchText=${encodeURIComponent(paylaod.searchText)}&`;
+      query += `search=${encodeURIComponent(paylaod.searchText)}&`;
     }
 
-    if (paylaod.orderBy) {
+    if (paylaod.searchText) {
       query += `orderBy=${paylaod.orderBy}&`;
     }
 
-    if (paylaod.order) {
+    if (paylaod.searchText) {
       query += `order=${paylaod.order}&`;
     }
 
-    if (paylaod.page) {
+    if (paylaod.searchText) {
       query += `page=${paylaod.page}&`;
     }
 
-    if (paylaod.take) {
+    if (paylaod.searchText) {
       query += `take=${paylaod.take}`;
     }
 
     return query;
   }
 
-  addBook(bookPayload: CreateBookInput): Observable<Book> {
-    return this._http
-      .post<Book>(`${this.apiurl}`, bookPayload, this.httpOptions)
-      .pipe(
-        tap((data) => data),
-        catchError(this.handleError)
-      );
-  }
-
-  updateBook(id: string, bookPayload: CreateBookInput): Observable<Book> {
-    return this._http
-      .patch<Book>(`${this.apiurl}/${id}`, bookPayload, this.httpOptions)
-      .pipe(
-        tap((data) => data),
-        catchError(this.handleError)
-      );
-  }
-
-  getBook(id: string): Observable<Book> {
-    return this._http.get<Book>(`${this.apiurl}/${id}`, this.httpOptions).pipe(
+  getUser(id: string): Observable<User> {
+    return this._http.get<User>(`${this.apiurl}/${id}`).pipe(
       tap((data) => data),
       catchError(this.handleError)
     );
   }
 
-  inactivateBook(id: string): Observable<Book> {
+  giveAdminAccess(id: string): Observable<User> {
     return this._http
-      .delete<Book>(`${this.apiurl}/${id}`, this.httpOptions)
+      .patch<User>(
+        `${this.apiurl}/access/${id}`,
+        { role: 'ADMIN' },
+        this.httpOptions
+      )
       .pipe(
         tap((data) => data),
         catchError(this.handleError)
       );
+  }
+
+  inactivateUser(id: string): Observable<User> {
+    return this._http.delete<User>(`${this.apiurl}/${id}`).pipe(
+      tap((data) => data),
+      catchError(this.handleError)
+    );
   }
 }

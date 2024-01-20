@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from './userlist/userlist.component';
-import { UserDetailsComponent } from './userdetails/userdetails.component';
+import { UserListComponent } from './components/userlist/userlist.component';
+import { UserDetailsComponent } from './components/userdetails/userdetails.component';
 
 const routes: Routes = [
   {
@@ -21,7 +21,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })

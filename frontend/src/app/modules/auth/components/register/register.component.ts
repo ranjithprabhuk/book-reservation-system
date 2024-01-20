@@ -54,8 +54,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     if (this.registerForm) {
       this.apiCallInProgess = true;
+      const { confirmPassword, ...requiredPayloadData } =
+        this.registerForm?.value;
       this.register$ = this._authService
-        .register(this.registerForm?.value)
+        .register(requiredPayloadData)
         .subscribe((response) => {
           if (response && response.username) {
             // persist the user details for further usage

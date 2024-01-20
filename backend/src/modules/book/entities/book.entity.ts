@@ -13,6 +13,9 @@ export class Book extends AppBaseEntity {
   @Column()
   ISBN: string;
 
+  @Column()
+  author: string;
+
   @Column({ default: true })
   isActive: boolean;
 

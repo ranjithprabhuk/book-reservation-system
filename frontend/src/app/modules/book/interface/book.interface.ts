@@ -4,6 +4,7 @@ export interface Book {
   name: string;
   description: string;
   ISBN: string;
+  author: string;
   isActive: boolean;
   bookReservations: Reservation[];
 }
@@ -16,14 +17,22 @@ export interface Reservation {
 }
 
 export interface SearchBookInput {
-  searchText?: string;
-  orderBy?: string;
-  order?: Order;
-  page?: number;
-  take?: number;
+  searchText: string;
+  orderBy: string;
+  order: Order;
+  page: number;
+  take: number;
+  pageCount: number;
+  itemCount: number;
 }
 
 export enum Order {
   ASC = 'ASC',
   DESC = 'DESC',
+}
+
+export interface CreateBookInput {
+  name: string;
+  description: string;
+  ISBN: string;
 }

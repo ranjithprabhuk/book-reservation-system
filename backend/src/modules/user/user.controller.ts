@@ -49,6 +49,13 @@ export class UserController {
     return this.userService.update(id, updateUserDto);
   }
 
+  @Patch('/access/:id')
+  @HttpCode(HttpStatus.OK)
+  @Auth(true, true, Role.ADMIN)
+  updateAccess(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
+  }
+
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @Auth(true, true, Role.USER)

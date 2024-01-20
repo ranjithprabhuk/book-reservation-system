@@ -58,7 +58,9 @@ export class AuthGuard implements CanActivate {
 
     if (
       isProtected &&
-      (!this.userInfoFromToken?.id || this.userInfoFromToken?.role !== role)
+      (!this.userInfoFromToken?.id ||
+        (this.userInfoFromToken?.role !== role &&
+        this.userInfoFromToken?.role !== Role.ADMIN))
     ) {
       return false;
     }
