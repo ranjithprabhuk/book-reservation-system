@@ -3,14 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from '../../../shared/services/local-storage.service';
-import Validation from '../../../../utils/validation.util';
 import { BookService } from '../../book.service';
 import { Book } from '../../interface/book.interface';
 import {
   ToastService,
   ToastType,
 } from 'src/app/modules/shared/toast/toast.service';
-import { User } from 'src/app/modules/user/interface/user.interface';
 
 @Component({
   selector: 'app-bookdetails',
@@ -32,6 +30,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   public isNew = true;
   public bookId: string = '';
   public book: Book | null = null;
+  public active: number = 1;
 
   constructor(
     private _bookService: BookService,

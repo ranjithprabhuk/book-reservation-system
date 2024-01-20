@@ -1,31 +1,44 @@
-<ng-template #dayTemplate let-date let-disabled="disabled">
-  <span
-    class="custom-day"
-    [ngbTooltip]="getTooltip(date)"
-    container="body"
-    [class.holiday]="!!isHoliday(date)"
-    [class.disabled]="disabled || isWeekend(date)"
-    [class.range]="isRange(date)"
-    [class.faded]="isHovered(date) || isInside(date)"
-    (mouseenter)="hoveredDate = date"
-    (mouseleave)="hoveredDate = null"
-  >
-    {{ date.day }}
-  </span>
-</ng-template>
+<div class="form-outline">
+  <label class="form-label">Select a date range to reserve the book</label>
+  <ng-template #dayTemplate let-date let-disabled="disabled">
+    <span
+      class="custom-day"
+      [ngbTooltip]="getTooltip(date)"
+      container="body"
+      [class.reserved]="!!isReserved(date)"
+      [class.disabled]="disabled || isApiCallInProgress"
+      [class.range]="isRange(date)"
+      [class.faded]="isHovered(date) || isInside(date)"
+      (mouseenter)="hoveredDate = date"
+      (mouseleave)="hoveredDate = null"
+    >
+      {{ date.day }}
+    </span>
+  </ng-template>
 
-<ngb-datepicker
-  (dateSelect)="onDateSelection($event)"
-  [dayTemplate]="dayTemplate"
-  [markDisabled]="markDisabled"
-  [showWeekNumbers]="true"
-  [minDate]="today"
-  outsideDays="hidden"
-  [displayMonths]="2"
-/>
-<div class="d-flex mt-5 justify-content-end">
-  <button class="btn btn-primary" (click)="reserveBook()">Reserve Book</button>
+  <ngb-datepicker
+    (dateSelect)="onDateSelection($event)"
+    [dayTemplate]="dayTemplate"
+    [markDisabled]="markDisabled"
+    [showWeekNumbers]="true"
+    [minDate]="today"
+    outsideDays="hidden"
+    [displayMonths]="2"
+  />
+
+  <div class="d-flex align-items-center mt-5">
+    <button
+      class="btn btn-primary btn-lg btn-block"
+      type="button"
+      (click)="reserveBook()"
+      [disabled]="isApiCallInProgress"
+    >
+      Reserve Book
+    </button>
+    <div style="padding-left: 10px" *ngIf="isApiCallInProgress">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+  </div>
 </div>
-
-<pre>From: {{ fromDate | json }} </pre>
-<pre>To: {{ toDate | json }} </pre>

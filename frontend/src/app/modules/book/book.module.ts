@@ -14,6 +14,7 @@ import {
   NgbDateNativeAdapter,
   NgbDatepickerModule,
   NgbModalModule,
+  NgbNavModule,
   NgbPagination,
   NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
@@ -30,6 +31,7 @@ import {
     NgbModalModule,
     FormsModule,
     NgbTooltipModule,
+    NgbNavModule,
   ],
   declarations: [BookListComponent, BookDetailsComponent, ReserveBookComponent],
   providers: [BookService, ReservationService, NgbDateNativeAdapter],

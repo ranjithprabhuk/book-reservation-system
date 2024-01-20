@@ -11,6 +11,7 @@ export interface Book {
 }
 
 export interface Reservation {
+  id: string;
   user: User;
   book: Book;
   fromDate: Date;

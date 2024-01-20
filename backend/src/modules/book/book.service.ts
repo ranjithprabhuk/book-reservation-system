@@ -87,12 +87,10 @@ export class BookService {
         );
       }
       const queryBuilder = this._bookRepository.createQueryBuilder('book');
-      // const response = this._bookRepository.findOne({ where: [{ id }] });
       return queryBuilder
         .leftJoinAndSelect('book.bookReservations', 'reservations')
         .where('book.id = :id', { id })
         .getOne();
-      // return response;
     } catch (e) {
       throw new InternalServerErrorException(e);
     }

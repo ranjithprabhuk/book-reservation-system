@@ -14,17 +14,17 @@
 .disabled:hover {
   background-color: transparent;
 }
-.holiday,
-.holiday.disabled,
-.holiday:hover {
+.reserved,
+.reserved.disabled,
+.reserved:hover {
   color: white;
   background-color: coral;
 }
-.range:not(.holiday):not(.disabled),
-.custom-day:not(.disabled):not(.holiday):hover {
+.range:not(.reserved):not(.disabled),
+.custom-day:not(.disabled):not(.reserved):hover {
   background-color: rgb(2, 117, 216);
   color: white;
 }
-.faded:not(.holiday):not(.disabled) {
+.faded:not(.reserved):not(.disabled) {
   background-color: rgba(2, 117, 216, 0.5);
 }

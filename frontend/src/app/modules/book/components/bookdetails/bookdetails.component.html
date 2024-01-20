@@ -1,129 +1,197 @@
-<section>
+<section class="p-2">
   <div class="container-fluid">
     <div class="row">
-      <div class="d-flex align-items-center col-md-6 col-lg-6 text-black">
-        <div class="w-100 px-5" *ngIf="bookForm && f">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a routerLink="/app/book">Book</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                {{ isNew ? "Add Book" : "Book Details" }}
-              </li>
-            </ol>
-          </nav>
-          <div></div>
-          <form
-            style="width: 100%"
-            [formGroup]="bookForm"
-            (ngSubmit)="onSubmit()"
-          >
-            <div class="form-outline mb-4">
-              <label class="form-label" for="name">Book Name</label>
-              <input
-                id="name"
-                type="text"
-                formControlName="name"
-                class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
-              />
-              <div
-                *ngIf="submitted && f['name'].errors"
-                class="invalid-feedback"
-              >
-                <div *ngIf="f['name'].errors['required']">
-                  Book Name is required
-                </div>
-              </div>
-            </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/app/book">Book</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ isNew ? "Add Book" : "Book Details" }}
+            </li>
+          </ol>
+        </nav>
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <button ngbNavLink>Book Information</button>
+            <ng-template ngbNavContent>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="d-flex col-lg-6 text-black">
+                    <div class="w-100" *ngIf="bookForm && f">
+                      <div></div>
+                      <form
+                        style="width: 100%"
+                        [formGroup]="bookForm"
+                        (ngSubmit)="onSubmit()"
+                      >
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="name">Book Name</label>
+                          <input
+                            id="name"
+                            type="text"
+                            formControlName="name"
+                            class="form-control form-control-lg"
+                            [ngClass]="{
+                              'is-invalid': submitted && f['name'].errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && f['name'].errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f['name'].errors['required']">
+                              Book Name is required
+                            </div>
+                          </div>
+                        </div>
 
-            <div class="form-outline mb-4">
-              <label class="form-label" for="author">Book Author</label>
-              <input
-                id="author"
-                type="text"
-                formControlName="author"
-                class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f['author'].errors }"
-              />
-              <div
-                *ngIf="submitted && f['author'].errors"
-                class="invalid-feedback"
-              >
-                <div *ngIf="f['author'].errors['required']">
-                  Author Name is required
-                </div>
-              </div>
-            </div>
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="author"
+                            >Book Author</label
+                          >
+                          <input
+                            id="author"
+                            type="text"
+                            formControlName="author"
+                            class="form-control form-control-lg"
+                            [ngClass]="{
+                              'is-invalid': submitted && f['author'].errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && f['author'].errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f['author'].errors['required']">
+                              Author Name is required
+                            </div>
+                          </div>
+                        </div>
 
-            <div class="form-outline mb-4">
-              <label class="form-label" for="description">Description</label>
-              <textarea
-                id="description"
-                type="text"
-                formControlName="description"
-                class="form-control form-control-lg"
-                [ngClass]="{
-                  'is-invalid': submitted && f['description'].errors
-                }"
-              ></textarea>
-              <div
-                *ngIf="submitted && f['description'].errors"
-                class="invalid-feedback"
-              >
-                <div *ngIf="f['description'].errors['required']">
-                  Description is required
-                </div>
-              </div>
-            </div>
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="description"
+                            >Description</label
+                          >
+                          <textarea
+                            id="description"
+                            type="text"
+                            formControlName="description"
+                            class="form-control form-control-lg"
+                            [ngClass]="{
+                              'is-invalid': submitted && f['description'].errors
+                            }"
+                          ></textarea>
+                          <div
+                            *ngIf="submitted && f['description'].errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f['description'].errors['required']">
+                              Description is required
+                            </div>
+                          </div>
+                        </div>
 
-            <div class="form-outline mb-4">
-              <label class="form-label" for="ISBN">ISBN Number</label>
-              <input
-                id="ISBN"
-                type="text"
-                formControlName="ISBN"
-                class="form-control form-control-lg"
-                [ngClass]="{ 'is-invalid': submitted && f['ISBN'].errors }"
-              />
-              <div
-                *ngIf="submitted && f['ISBN'].errors"
-                class="invalid-feedback"
-              >
-                <div *ngIf="f['ISBN'].errors['required']">
-                  ISBN Number is required
-                </div>
-              </div>
-            </div>
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="ISBN"
+                            >ISBN Number</label
+                          >
+                          <input
+                            id="ISBN"
+                            type="text"
+                            formControlName="ISBN"
+                            class="form-control form-control-lg"
+                            [ngClass]="{
+                              'is-invalid': submitted && f['ISBN'].errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && f['ISBN'].errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="f['ISBN'].errors['required']">
+                              ISBN Number is required
+                            </div>
+                          </div>
+                        </div>
 
-            <div class="pt-1 mb-4">
-              <div class="d-flex justify-content-between align-items-end">
-                <div class="d-flex align-items-center" *ngIf="isAdmin">
-                  <button
-                    class="btn btn-primary btn-lg btn-block"
-                    type="submit"
-                    [disabled]="isApiCallInProgress"
-                  >
-                    {{ isNew ? "Add Book" : "Update Book" }}
-                  </button>
-                  <div style="padding-left: 10px" *ngIf="isApiCallInProgress">
-                    <div class="spinner-border text-primary" role="status">
-                      <span class="sr-only"></span>
+                        <div class="pt-1 mb-4">
+                          <div
+                            class="d-flex justify-content-between align-items-end"
+                          >
+                            <div
+                              class="d-flex align-items-center"
+                              *ngIf="isAdmin"
+                            >
+                              <button
+                                class="btn btn-primary btn-lg btn-block"
+                                type="submit"
+                                [disabled]="isApiCallInProgress"
+                              >
+                                {{ isNew ? "Add Book" : "Update Book" }}
+                              </button>
+                              <div
+                                style="padding-left: 10px"
+                                *ngIf="isApiCallInProgress"
+                              >
+                                <div
+                                  class="spinner-border text-primary"
+                                  role="status"
+                                >
+                                  <span class="sr-only"></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="!isNew && isAdmin">
+                              <a routerLink="/app/book/new"> Add Book </a>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
-                </div>
-                <div *ngIf="!isNew && isAdmin">
-                  <a routerLink="/app/book/new"> Add Book </a>
+                  <div class="d-flex col-lg-6 text-black" *ngIf="!isAdmin">
+                    <app-reserve-book [book]="book"></app-reserve-book>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="d-flex align-items-center col-md-6 col-lg-6 text-black">
-        <app-reserve-book [book]="book"></app-reserve-book>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <button ngbNavLink>Reservations</button>
+            <ng-template ngbNavContent>
+              <div class="p-2">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">From Date</th>
+                      <th scope="col">To Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let reservation of book?.bookReservations;
+                        let i = index
+                      "
+                    >
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ reservation.id }}</td>
+                      <td>{{ reservation.fromDate }}</td>
+                      <td>{{ reservation.toDate }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </section>

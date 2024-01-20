@@ -31,58 +31,45 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
   ) {
     this.markDisabled = this.markDisabled.bind(this);
     this.today = _calendar.getToday();
-    this.fromDate = this.getFirstAvailableDate(this.today);
-    this.toDate = this.getFirstAvailableDate(
-      _calendar.getNext(this.today, 'd', 15)
-    );
   }
 
   @Input() book: any;
 
   public user$: Subscription | null = null;
   private reserveBook$: Subscription | null = null;
-
   public user: User | null = null;
   public isApiCallInProgress = false;
+  public today: NgbDate;
+  public hoveredDate: NgbDate | null = null;
+  public fromDate: NgbDate | null = null;
+  public toDate: NgbDate | null = null;
 
   ngOnInit() {
     this.getUserInfo();
   }
 
-  today: NgbDate;
+  public isReserved(date: NgbDate): boolean {
+    const inputDate = new Date(`${date.year}-${date.month}-${date.day}`);
 
-  hoveredDate: NgbDate | null = null;
+    if (this.book?.bookReservations && this.book?.bookReservations.length) {
+      for (const range of this.book?.bookReservations) {
+        const fromDate = new Date(range.fromDate);
+        const toDate = new Date(range.toDate);
 
-  fromDate: NgbDate;
-  toDate: NgbDate | null = null;
+        if (inputDate >= fromDate && inputDate <= toDate) {
+          return true;
+        }
+      }
+    }
 
-  holidays: { month: number; day: number; text: string }[] = [
-    { month: 1, day: 1, text: 'New Years Day' },
-    { month: 3, day: 30, text: 'Good Friday (hi, Alsace!)' },
-    { month: 5, day: 1, text: 'Labour Day' },
-    { month: 5, day: 5, text: 'V-E Day' },
-    { month: 7, day: 14, text: 'Bastille Day' },
-    { month: 8, day: 15, text: 'Assumption Day' },
-    { month: 11, day: 1, text: 'All Saints Day' },
-    { month: 11, day: 11, text: 'Armistice Day' },
-    { month: 12, day: 25, text: 'Christmas Day' },
-  ];
-
-  isHoliday(date: NgbDate): string {
-    const holiday = this.holidays.find(
-      (h) => h.day === date.day && h.month === date.month
-    );
-    return holiday ? holiday.text : '';
+    return false;
   }
 
-  markDisabled(date: any, current: any): boolean {
-    return (
-      this.isHoliday(date) !== '' ||
-      (this.isWeekend(date) && date.month === current.month)
-    );
+  public markDisabled(date: any): boolean {
+    return this.isReserved(date);
   }
 
-  onDateSelection(date: NgbDate) {
+  public onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
     } else if (
@@ -97,30 +84,11 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
     }
   }
 
-  getTooltip(date: NgbDate): string {
-    const holidayTooltip = this.isHoliday(date);
-
-    if (holidayTooltip) {
-      return holidayTooltip;
-    } else if (this.isRange(date) && !this.isWeekend(date)) {
-      return 'Vacations!';
-    } else {
-      return '';
-    }
+  public getTooltip(date: NgbDate): string {
+    return this.isReserved(date) ? 'Reserved!' : '';
   }
 
-  getFirstAvailableDate(date: NgbDate): NgbDate {
-    while (this.isWeekend(date) || this.isHoliday(date)) {
-      date = this._calendar.getNext(date, 'd', 1);
-    }
-    return date;
-  }
-
-  isWeekend(date: NgbDate) {
-    return this._calendar.getWeekday(date) >= 6;
-  }
-
-  isRange(date: NgbDate) {
+  public isRange(date: NgbDate) {
     return (
       date.equals(this.fromDate) ||
       (this.toDate && date.equals(this.toDate)) ||
@@ -129,7 +97,7 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
     );
   }
 
-  isHovered(date: NgbDate) {
+  public isHovered(date: NgbDate) {
     return (
       this.fromDate &&
       !this.toDate &&
@@ -139,12 +107,13 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
     );
   }
 
-  isInside(date: NgbDate) {
+  public isInside(date: NgbDate) {
     return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
   }
 
   public reserveBook() {
     if (this.fromDate) {
+      this.isApiCallInProgress = true;
       const payload = {
         bookId: this.book.id,
         userId: this.user?.id,
@@ -162,6 +131,8 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
             );
             this._router.navigateByUrl('/app/book');
           } else {
+            this.fromDate = null;
+            this.toDate = null;
             this.isApiCallInProgress = false;
           }
         });
