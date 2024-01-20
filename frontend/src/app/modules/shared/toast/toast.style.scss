@@ -1,11 +1,11 @@
 .error {
   .toast {
-    border-color: var(--bs-form-invalid-border-color);
+    background: var(--bs-danger-bg-subtle);
   }
 }
 
 .success {
   .toast {
-    border-color: var(--bs-form-valid-border-color);
+    background: var(--bs-success-bg-subtle);
   }
 }

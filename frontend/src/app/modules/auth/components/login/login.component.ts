@@ -12,8 +12,10 @@ import { LocalStorageService } from '../../../shared/services/local-storage.serv
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private login$: Subscription | null = null;
-  public registerForm: FormGroup | null = null;
-  submitted = false;
+  public loginForm: FormGroup | null = null;
+
+  public submitted = false;
+  public apiCallInProgess = false;
 
   constructor(
     private _authService: AuthService,
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.registerForm = this._formBuilder.group({
+    this.loginForm = this._formBuilder.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -31,22 +33,22 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   // convenience getter for easy access to form fields
   get f() {
-    return this.registerForm?.controls;
+    return this.loginForm?.controls;
   }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm?.invalid) {
+    if (this.loginForm?.invalid) {
       return;
     }
 
-    if (this.registerForm) {
+    if (this.loginForm) {
+      this.apiCallInProgess = true;
       this.login$ = this._authService
-        .login(this.registerForm?.value)
+        .login(this.loginForm?.value)
         .subscribe((response) => {
-          console.log('asdasda', response);
           if (response && response.username) {
             // persist the user details for further usage
             this._localStorageService.setInfo('user', response);
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           } else {
             // reset the form
             this.submitted = false;
+            this.apiCallInProgess = false;
           }
         });
     }
@@ -62,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onReset() {
     this.submitted = false;
-    this.registerForm?.reset();
+    this.loginForm?.reset();
   }
 
   ngOnDestroy() {

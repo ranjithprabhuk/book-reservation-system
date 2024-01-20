@@ -12,7 +12,7 @@
       <div
         class="d-flex align-items-center col-md-6 col-lg-4 text-black vh-100"
       >
-        <div class="w-100 px-5" *ngIf="registerForm && f">
+        <div class="w-100 px-5" *ngIf="loginForm && f">
           <h3 class="mb-5">
             <span class="border-primary border-bottom border-5 pb-2"
               >Book Reservation</span
@@ -20,7 +20,7 @@
           </h3>
           <form
             style="width: 100%"
-            [formGroup]="registerForm"
+            [formGroup]="loginForm"
             (ngSubmit)="onSubmit()"
           >
             <h3 class="fw-normal" style="letter-spacing: 1px">Log in</h3>
@@ -36,7 +36,7 @@
                 formControlName="username"
                 class="form-control form-control-lg"
                 [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
-                [disabled]="submitted"
+                [disabled]="apiCallInProgess"
               />
               <div
                 *ngIf="submitted && f['username'].errors"
@@ -56,7 +56,7 @@
                 formControlName="password"
                 class="form-control form-control-lg"
                 [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
-                [disabled]="submitted"
+                [disabled]="apiCallInProgess"
               />
               <div
                 *ngIf="submitted && f['password'].errors"
@@ -76,11 +76,11 @@
                 <button
                   class="btn btn-primary btn-lg btn-block"
                   type="submit"
-                  [disabled]="submitted"
+                  [disabled]="apiCallInProgess"
                 >
                   Login
                 </button>
-                <div style="padding-left: 10px" *ngIf="submitted">
+                <div style="padding-left: 10px" *ngIf="apiCallInProgess">
                   <div class="spinner-border text-primary" role="status">
                     <span class="sr-only"></span>
                   </div>

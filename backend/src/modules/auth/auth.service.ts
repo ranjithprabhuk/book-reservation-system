@@ -28,7 +28,7 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return this.generateToken(result);
+    return { ...result, ...this.generateToken(result) };
   }
 
   async login(username: string, password: string): Promise<any> {

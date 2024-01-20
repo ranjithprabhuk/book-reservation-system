@@ -24,11 +24,13 @@ export class AuthController {
     @Body() signupDto: SignUpDto,
     @Res({ passthrough: true }) response,
   ) {
-    const result = await this._authService.signup(signupDto);
-    response.cookie('jwt', result.access_token, { httpOnly: true });
+    const { access_token, password, ...rest } = await this._authService.signup(
+      signupDto,
+    );
+    response.cookie('jwt', access_token, { httpOnly: true });
     response.cookie('isLoggedIn', true, { httpOnly: false });
 
-    return 'Success';
+    return { ...rest };
   }
 
   @Post('/login')
