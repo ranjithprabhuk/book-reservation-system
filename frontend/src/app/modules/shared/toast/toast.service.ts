@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+export enum ToastType {
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
 export interface IToast {
   title: string;
   message: string;
+  type: 'success' | 'error';
 }
 
 @Injectable({ providedIn: 'root' })
@@ -11,8 +17,12 @@ export class ToastService {
   private toast: BehaviorSubject<IToast | any> = new BehaviorSubject(null);
   public toast$: Observable<IToast | null> = this.toast.asObservable();
 
-  public showToast(title: string, message: string) {
-    this.toast.next({ title, message });
+  public showToast(
+    title: string,
+    message: string,
+    type: ToastType = ToastType.ERROR
+  ) {
+    this.toast.next({ title, message, type });
   }
 
   public hideToast() {

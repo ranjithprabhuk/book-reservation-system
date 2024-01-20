@@ -1,0 +1,11 @@
+.error {
+  .toast {
+    border-color: var(--bs-form-invalid-border-color);
+  }
+}
+
+.success {
+  .toast {
+    border-color: var(--bs-form-valid-border-color);
+  }
+}

@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ToastService } from './toast.service';
 
 @Component({
   selector: 'app-toast',
   template: `
     <ng-container *ngIf="toastService.toast$ | async as toast">
-      <div class="p-2" style="position: absolute; top: 0; right: 0;">
+      <div
+        [class]="toast.type + ' p-2'"
+        style="position: absolute; top: 0; right: 0;"
+      >
         <ngb-toast
+          class="toast"
           [animation]="true"
-          [delay]="5000"
+          [delay]="500000"
           [header]="toast.title"
           [autohide]="true"
           (hidden)="toastService.hideToast()"
@@ -18,6 +22,7 @@ import { ToastService } from './toast.service';
       </div>
     </ng-container>
   `,
+  styleUrls: ['./toast.style.scss'],
 })
 export class ToastComponent {
   constructor(public toastService: ToastService) {}
