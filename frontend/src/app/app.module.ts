@@ -15,7 +15,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { BookModule } from './modules/book/book.module';
 import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './modules/shared/shared.module';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, BaseLayoutComponent, ToastComponent],
@@ -29,6 +29,7 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
     UserModule,
     SharedModule,
     NgbToastModule,
+    NgbDropdownModule,
   ],
   providers: [
     {

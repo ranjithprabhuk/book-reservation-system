@@ -13,11 +13,42 @@
         <li class="nav-item">
           <a class="nav-link" href="javascript:void(0)">Reserve Books</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="javascript:void(0)">Link</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li
+          class="nav-item"
+          ngbDropdown
+          display="dynamic"
+          placement="bottom-end"
+        >
+          <a
+            class="nav-link"
+            tabindex="0"
+            ngbDropdownToggle
+            id="navbarDropdown3"
+            role="button"
+          >
+            <span class="fa fa-user"></span>
+          </a>
+          <div
+            ngbDropdownMenu
+            aria-labelledby="navbarDropdown3"
+            class="dropdown-menu"
+          >
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+              ><span class="fa fa-user"></span> {{ user.firstName }}
+              {{ user.lastName }}</a
+            >
+            <a ngbDropdownItem href="#" (click)="logout()"
+              ><span class="fa fa-sign-out"></span>Logout</a
+            >
+          </div>
         </li>
       </ul>
     </div>
