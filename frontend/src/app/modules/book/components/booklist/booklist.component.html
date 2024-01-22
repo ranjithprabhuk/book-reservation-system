@@ -3,25 +3,12 @@
     <div class="d-flex">
       <div class="w-100">
         <div class="input-group ms-2 pe-sm-3">
-          <input
-            class="form-control bg-transparent rounded-0 border-0 shadow-none ps-5 py-4"
-            type="text"
-            placeholder="Search Books"
-            [(ngModel)]="bookPaginationInfo.searchText"
-            (keyup.enter)="searchBooksInfo()"
-          />
-          <button
-            type="button"
-            class="btn btn-link"
-            (click)="searchBooksInfo()"
-          >
+          <input class="form-control bg-transparent rounded-0 border-0 shadow-none ps-5 py-4" type="text"
+            placeholder="Search Books" [(ngModel)]="bookPaginationInfo.searchText" (keyup.enter)="searchBooksInfo()" />
+          <button type="button" class="btn btn-link" (click)="searchBooksInfo()">
             Search
           </button>
-          <button
-            type="button"
-            class="btn btn-link"
-            (click)="bookPaginationInfo.searchText = ''; searchBooksInfo()"
-          >
+          <button type="button" class="btn btn-link" (click)="bookPaginationInfo.searchText = ''; searchBooksInfo()">
             Clear
           </button>
         </div>
@@ -30,19 +17,14 @@
   </div>
 
   <div class="d-flex justify-content-end">
-    <button
-      class="btn btn-outline-primary"
-      routerLink="/app/book/new"
-      *ngIf="isAdmin"
-    >
+    <button class="btn btn-outline-primary" routerLink="/app/book/new" *ngIf="isAdmin">
       Add Book
     </button>
   </div>
 
-  <div
-    class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-lg-4 pt-2"
-  >
-    <div class="col mb-2" *ngFor="let book of books">
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-lg-4 pt-2">
+    @for (book of books; track book.name) {
+    <div class="col mb-2">
       <article class="card h-100 border-0 shadow">
         <div class="card-body">
           <div class="d-flex align-items-center flex-wrap">
@@ -59,24 +41,14 @@
           </div>
         </div>
         <div class="card-footer mt-n1 py-0 border-0">
-          <div
-            class="d-flex align-items-center position-relative mb-1 py-3 border-top justify-content-between"
-          >
+          <div class="d-flex align-items-center position-relative mb-1 py-3 border-top justify-content-between">
             <div>
-              <button
-                type="button"
-                class="btn btn-primary"
-                [routerLink]="'/app/book/' + book.id"
-              >
+              <button type="button" class="btn btn-primary" [routerLink]="'/app/book/' + book.id">
                 {{ isAdmin ? "Details" : "Reserve" }}
               </button>
             </div>
             <div *ngIf="isAdmin">
-              <button
-                type="button"
-                class="btn btn-outline-danger"
-                (click)="inactivateBook(book.id)"
-              >
+              <button type="button" class="btn btn-outline-danger" (click)="inactivateBook(book.id)">
                 Delete
               </button>
             </div>
@@ -84,18 +56,16 @@
         </div>
       </article>
     </div>
+    } @empty {
+    <h4 *ngIf="!bookSearchInProgress"> There are no books available in the system. </h4>
+    }
   </div>
   <hr class="mt-4 mb-3" />
 
-  <div class="d-flex justify-content-center">
-    <ngb-pagination
-      [collectionSize]="bookPaginationInfo.itemCount"
-      [(page)]="bookPaginationInfo.page"
-      [pageSize]="bookPaginationInfo.take"
-      [rotate]="true"
-      [boundaryLinks]="true"
-      (pageChange)="handlePageChange($event)"
-    />
+  <div class="d-flex justify-content-center" *ngIf="books.length > 0">
+    <ngb-pagination [collectionSize]="bookPaginationInfo.itemCount" [(page)]="bookPaginationInfo.page"
+      [pageSize]="bookPaginationInfo.take" [rotate]="true" [boundaryLinks]="true"
+      (pageChange)="handlePageChange($event)" />
   </div>
 </div>
 
