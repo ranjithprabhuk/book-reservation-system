@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 import { LocalStorageService } from 'src/app/modules/shared/services/local-storage.service';
-import { User } from 'src/app/modules/user/interface/user.interface';
 
 @Component({
   selector: 'app-base-layout',

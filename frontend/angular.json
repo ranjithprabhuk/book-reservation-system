@@ -85,8 +85,7 @@
               "buildTarget": "online-book-reservation:build:production"
             },
             "development": {
-              "buildTarget": "online-book-reservation:build:development",
-              "proxyConfig": "src/proxy.conf.mjs"
+              "buildTarget": "online-book-reservation:build:development"
             }
           },
           "defaultConfiguration": "development"
