@@ -13,7 +13,7 @@ import {
   ToastType,
 } from 'src/app/modules/shared/toast/toast.service';
 import { Router } from '@angular/router';
-import { convertToIsoString } from '../../../../utils/date.util';
+import { convertToIsoString, formatToTwoDigits } from '../../../../utils/date.util';
 
 @Component({
   selector: 'app-reserve-book',
@@ -48,8 +48,10 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
     this.getUserInfo();
   }
 
+
+
   public isReserved(date: NgbDate): boolean {
-    const inputDate = new Date(`${date.year}-${date.month}-${date.day}`);
+    const inputDate = new Date(`${date.year}-${formatToTwoDigits(date.month)}-${formatToTwoDigits(date.day)}`);
 
     if (this.book?.bookReservations && this.book?.bookReservations.length) {
       for (const range of this.book?.bookReservations) {

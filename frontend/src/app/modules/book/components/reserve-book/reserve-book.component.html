@@ -1,5 +1,5 @@
 <div class="form-outline">
-  <label class="form-label">Select a date range to reserve the book</label>
+  <label class="form-label" style="display: block;">Select a date range to reserve the book</label>
   <ng-template #dayTemplate let-date let-disabled="disabled">
     <span
       class="custom-day"
@@ -20,7 +20,7 @@
     (dateSelect)="onDateSelection($event)"
     [dayTemplate]="dayTemplate"
     [markDisabled]="markDisabled"
-    [showWeekNumbers]="true"
+    [showWeekNumbers]="false"
     [minDate]="today"
     outsideDays="hidden"
     [displayMonths]="2"

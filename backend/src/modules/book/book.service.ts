@@ -14,7 +14,7 @@ import { SqlUtility } from 'src/shared/utility/sql.utility';
 export class BookService {
   constructor(
     @InjectRepository(Book) private _bookRepository: Repository<Book>,
-  ) {}
+  ) { }
 
   create(createBookDto: CreateBookDto) {
     try {
@@ -50,10 +50,10 @@ export class BookService {
       const queryBuilder = this._bookRepository.createQueryBuilder('book');
       const whereClause = pageOptionsDto.searchText
         ? SqlUtility.getSearchTextWhereClause('book', [
-            'name',
-            'description',
-            'ISBN',
-          ])
+          'name',
+          'description',
+          'ISBN',
+        ])
         : '';
 
       queryBuilder
@@ -86,11 +86,15 @@ export class BookService {
           'Book ID is required to get the book information',
         );
       }
+
       const queryBuilder = this._bookRepository.createQueryBuilder('book');
       return queryBuilder
-        .leftJoinAndSelect('book.bookReservations', 'reservations')
-        .where('book.id = :id', { id })
+        .leftJoinAndSelect('book.bookReservations', 'reservation')
+        .leftJoinAndSelect('reservation.user', 'user')
+        .where('book.id = :bookId', { bookId: id })
+        .select(['book.id', 'book.name', 'book.author', 'book.ISBN', 'book.description', 'reservation.id', 'reservation.fromDate', 'reservation.toDate', 'user.id', 'user.firstName', 'user.lastName'])
         .getOne();
+
     } catch (e) {
       throw new InternalServerErrorException(e);
     }

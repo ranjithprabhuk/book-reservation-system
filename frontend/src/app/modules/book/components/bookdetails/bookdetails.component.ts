@@ -9,6 +9,7 @@ import {
   ToastService,
   ToastType,
 } from 'src/app/modules/shared/toast/toast.service';
+import { User } from 'src/app/modules/user/interface/user.interface';
 
 @Component({
   selector: 'app-bookdetails',
@@ -24,6 +25,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   public user$: Subscription | null = null;
 
   public isAdmin: boolean = false;
+  public user: User | null = null;
   public bookForm: FormGroup | null = null;
   public submitted = false;
   public isApiCallInProgress = false;
@@ -38,7 +40,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     private _toastService: ToastService,
     private _router: Router,
     private _localStorageService: LocalStorageService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.onLoad();
@@ -132,6 +134,14 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
+  public getBookReservations() {
+    if (!this.isAdmin) {
+      return this.book?.bookReservations.filter(reservation => reservation.user.id === this.user?.id)
+    }
+
+    return this.book?.bookReservations;
+  }
+
   private getBook() {
     this.isApiCallInProgress = true;
     this.book$ = this._bookService
@@ -148,6 +158,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.user$ = this._localStorageService.myData$.subscribe((res) => {
       if (res && res.key === 'user' && res.value) {
         this.isAdmin = res.value.role === 'ADMIN';
+        this.user = res.value;
         if (!this.isAdmin) {
           this.bookForm?.disable();
         }
@@ -157,7 +168,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
   private setBookFormValues(bookInfo: Book) {
     this.book = bookInfo;
-    console.log('bookj', this.book);
     const { name, description, ISBN, author } = bookInfo;
     this.bookForm?.setValue({ name, description, ISBN, author });
     if (!this.isAdmin) {
