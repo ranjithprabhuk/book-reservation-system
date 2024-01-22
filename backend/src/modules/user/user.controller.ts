@@ -51,14 +51,14 @@ export class UserController {
 
   @Patch('/access/:id')
   @HttpCode(HttpStatus.OK)
-  @Auth(true, true, Role.ADMIN)
+  @Auth(true, false, Role.ADMIN)
   updateAccess(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @Auth(true, true, Role.USER)
+  @Auth(true, false, Role.USER)
   remove(@Param('id') id: string) {
     return this.userService.inActivate(id);
   }

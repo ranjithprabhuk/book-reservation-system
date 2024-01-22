@@ -48,8 +48,6 @@ export class ReserveBookComponent implements OnInit, OnDestroy {
     this.getUserInfo();
   }
 
-
-
   public isReserved(date: NgbDate): boolean {
     const inputDate = new Date(`${date.year}-${formatToTwoDigits(date.month)}-${formatToTwoDigits(date.day)}`);
 

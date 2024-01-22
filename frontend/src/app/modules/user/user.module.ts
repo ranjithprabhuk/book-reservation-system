@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { UserService } from './user.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './components/userlist/userlist.component';
 import { UserDetailsComponent } from './components/userdetails/userdetails.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -16,6 +17,8 @@ import { UserDetailsComponent } from './components/userdetails/userdetails.compo
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    NgbPaginationModule
   ],
   declarations: [UserListComponent, UserDetailsComponent],
   providers: [UserService],

@@ -1,38 +1,20 @@
 <div class="form-outline">
   <label class="form-label" style="display: block;">Select a date range to reserve the book</label>
   <ng-template #dayTemplate let-date let-disabled="disabled">
-    <span
-      class="custom-day"
-      [ngbTooltip]="getTooltip(date)"
-      container="body"
-      [class.reserved]="!!isReserved(date)"
-      [class.disabled]="disabled || isApiCallInProgress"
-      [class.range]="isRange(date)"
-      [class.faded]="isHovered(date) || isInside(date)"
-      (mouseenter)="hoveredDate = date"
-      (mouseleave)="hoveredDate = null"
-    >
+    <span class="custom-day" [ngbTooltip]="getTooltip(date)" container="body" [class.reserved]="!!isReserved(date)"
+      [class.disabled]="disabled || isApiCallInProgress" [class.range]="isRange(date)"
+      [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+      (mouseleave)="hoveredDate = null">
       {{ date.day }}
     </span>
   </ng-template>
 
-  <ngb-datepicker
-    (dateSelect)="onDateSelection($event)"
-    [dayTemplate]="dayTemplate"
-    [markDisabled]="markDisabled"
-    [showWeekNumbers]="false"
-    [minDate]="today"
-    outsideDays="hidden"
-    [displayMonths]="2"
-  />
+  <ngb-datepicker (dateSelect)="onDateSelection($event)" [dayTemplate]="dayTemplate" [markDisabled]="markDisabled"
+    [showWeekNumbers]="false" [minDate]="today" outsideDays="hidden" [displayMonths]="2" />
 
   <div class="d-flex align-items-center mt-5">
-    <button
-      class="btn btn-primary btn-lg btn-block"
-      type="button"
-      (click)="reserveBook()"
-      [disabled]="isApiCallInProgress"
-    >
+    <button class="btn btn-primary btn-lg btn-block" type="button" (click)="reserveBook()"
+      [disabled]="isApiCallInProgress">
       Reserve Book
     </button>
     <div style="padding-left: 10px" *ngIf="isApiCallInProgress">

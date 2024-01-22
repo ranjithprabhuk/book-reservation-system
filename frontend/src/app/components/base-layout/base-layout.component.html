@@ -1,11 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark navigation-bar">
   <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mynavbar"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
@@ -13,41 +8,20 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/app/book">Reserve Books</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
+        <li class="nav-item" *ngIf="user.role === 'ADMIN'">
+          <a class="nav-link" routerLink="/app/user">Users</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li> -->
       </ul>
       <ul class="navbar-nav ms-auto">
-        <li
-          class="nav-item"
-          ngbDropdown
-          display="dynamic"
-          placement="bottom-end"
-        >
-          <a
-            class="nav-link"
-            tabindex="0"
-            ngbDropdownToggle
-            id="navbarDropdown3"
-            role="button"
-          >
+        <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
             <span class="fa fa-user"></span>
           </a>
-          <div
-            ngbDropdownMenu
-            aria-labelledby="navbarDropdown3"
-            class="dropdown-menu"
-          >
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
-              ><span class="fa fa-user"></span> {{ user.firstName }}
-              {{ user.lastName }}</a
-            >
-            <a ngbDropdownItem href="#" (click)="logout()"
-              ><span class="fa fa-sign-out"></span>Logout</a
-            >
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"><span class="fa fa-user"></span> {{
+              user.firstName }}
+              {{ user.lastName }}</a>
+            <a ngbDropdownItem href="#" (click)="logout()"><span class="fa fa-sign-out"></span>Logout</a>
           </div>
         </li>
       </ul>

@@ -13,6 +13,7 @@ export class UserService {
     headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json'),
+    withCredentials: true,
   };
 
   constructor(private _http: HttpClient, private _toastService: ToastService) {}
@@ -22,9 +23,9 @@ export class UserService {
     return Promise.resolve(error);
   };
 
-  searcUsers(searchPayload: SearchUserInput): Observable<User> {
+  searchUsers(searchPayload: SearchUserInput): Observable<User> {
     const url = `${this.apiurl}/search?${this.getSearchQuery(searchPayload)}`;
-    return this._http.get<User>(url).pipe(
+    return this._http.get<User>(url, this.httpOptions).pipe(
       tap((data) => data),
       catchError(this.handleError)
     );
@@ -34,22 +35,22 @@ export class UserService {
     let query = '';
 
     if (paylaod.searchText) {
-      query += `search=${encodeURIComponent(paylaod.searchText)}&`;
+      query += `searchText=${encodeURIComponent(paylaod.searchText)}&`;
     }
 
-    if (paylaod.searchText) {
+    if (paylaod.orderBy) {
       query += `orderBy=${paylaod.orderBy}&`;
     }
 
-    if (paylaod.searchText) {
+    if (paylaod.order) {
       query += `order=${paylaod.order}&`;
     }
 
-    if (paylaod.searchText) {
+    if (paylaod.page) {
       query += `page=${paylaod.page}&`;
     }
 
-    if (paylaod.searchText) {
+    if (paylaod.take) {
       query += `take=${paylaod.take}`;
     }
 
@@ -57,7 +58,7 @@ export class UserService {
   }
 
   getUser(id: string): Observable<User> {
-    return this._http.get<User>(`${this.apiurl}/${id}`).pipe(
+    return this._http.get<User>(`${this.apiurl}/${id}`, this.httpOptions).pipe(
       tap((data) => data),
       catchError(this.handleError)
     );
@@ -77,9 +78,11 @@ export class UserService {
   }
 
   inactivateUser(id: string): Observable<User> {
-    return this._http.delete<User>(`${this.apiurl}/${id}`).pipe(
-      tap((data) => data),
-      catchError(this.handleError)
-    );
+    return this._http
+      .delete<User>(`${this.apiurl}/${id}`, this.httpOptions)
+      .pipe(
+        tap((data) => data),
+        catchError(this.handleError)
+      );
   }
 }

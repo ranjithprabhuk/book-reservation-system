@@ -54,12 +54,14 @@ export class UserService {
             'firstName',
             'lastName',
             'username',
+            'role',
           ])
         : '';
 
       queryBuilder
         .select()
         .where(whereClause)
+        .andWhere('user.isActive = true')
         .orderBy(`user.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)

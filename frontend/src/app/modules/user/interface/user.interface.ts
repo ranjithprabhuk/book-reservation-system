@@ -10,9 +10,11 @@ export interface User {
 }
 
 export interface SearchUserInput {
-  searchText?: string;
-  orderBy?: string;
-  order?: Order;
-  page?: number;
-  take?: number;
+  searchText: string;
+  orderBy: string;
+  order: Order;
+  page: number;
+  take: number;
+  pageCount: number;
+  itemCount: number;
 }

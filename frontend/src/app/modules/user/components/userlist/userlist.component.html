@@ -1,7 +1,107 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      
+<div class="container pb-5 mb-2 mb-md-4">
+  <div class="bg-light shadow-lg rounded-3 mb-4">
+    <div class="d-flex">
+      <div class="w-100">
+        <div class="input-group ms-2 pe-sm-3">
+          <input
+            class="form-control bg-transparent rounded-0 border-0 shadow-none ps-5 py-4"
+            type="text"
+            placeholder="Search Users"
+            [(ngModel)]="userPaginationInfo.searchText"
+            (keyup.enter)="searchUsersInfo()"
+          />
+          <button
+            type="button"
+            class="btn btn-link"
+            (click)="searchUsersInfo()"
+          >
+            Search
+          </button>
+          <button
+            type="button"
+            class="btn btn-link"
+            (click)="userPaginationInfo.searchText = ''; searchUsersInfo()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div
+    class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-lg-4 pt-2"
+  >
+    <table class="table table-bordered table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Role</th>
+          <th scope="col">Username</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track user.firstName) {
+        <tr>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>
+            <span
+              class="badge"
+              [class]="
+                user.role === 'ADMIN' ? 'text-bg-warning' : 'text-bg-info'
+              "
+              >{{ user.role }}</span
+            >
+          </td>
+          <td>{{ user.username }}</td>
+          <td>
+            <div class="d-flex">
+              <div class="px-2">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="
+                    deleteUser(user)
+                  "
+                >
+                  <span class="fa fa-trash"></span>
+                </button>
+              </div>
+              <div *ngIf="user.role === 'USER'">
+                <button type="button" class="btn btn-sm btn-outline-info">
+                  <span class="fa fa-eye"></span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        } @empty {
+        <h4 *ngIf="!userSearchInProgress">
+          There are no members available in the system.
+        </h4>
+        }
+      </tbody>
+    </table>
+  </div>
+  <hr class="mt-4 mb-3" />
+
+  <div class="d-flex justify-content-center" *ngIf="users.length > 0">
+    <ngb-pagination
+      [collectionSize]="userPaginationInfo.itemCount"
+      [(page)]="userPaginationInfo.page"
+      [pageSize]="userPaginationInfo.take"
+      [rotate]="true"
+      [boundaryLinks]="true"
+      (pageChange)="handlePageChange($event)"
+    />
+  </div>
+</div>
+
+<div class="overlay-spinner" *ngIf="userSearchInProgress">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only"></span>
   </div>
 </div>

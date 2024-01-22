@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/modules/auth/auth.service';
@@ -8,6 +8,7 @@ import { LocalStorageService } from 'src/app/modules/shared/services/local-stora
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
   styleUrls: ['./base-layout.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BaseLayoutComponent implements OnInit, OnDestroy {
   private user$: Subscription | null = null;
@@ -17,7 +18,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy {
     private _localStorageService: LocalStorageService,
     private _authService: AuthService,
     private _router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getUserInfo();
@@ -33,7 +34,7 @@ export class BaseLayoutComponent implements OnInit, OnDestroy {
   }
 
   public logout() {
-    this._authService.logout()
+    this._authService.logout();
     this._localStorageService.clearAllLocalStorage();
     this._router.navigateByUrl('auth/login');
   }
