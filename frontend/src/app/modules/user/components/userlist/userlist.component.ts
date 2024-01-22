@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     order: Order.ASC,
     orderBy: 'firstName',
     page: 1,
-    take: 12,
+    take: 10,
     pageCount: 1,
     itemCount: 1,
   };
@@ -54,10 +54,10 @@ export class UserListComponent implements OnInit, OnDestroy {
       this.users$ = this._userService
         .searchUsers(this.userPaginationInfo)
         .subscribe((res: any) => {
-          if (res) {
+          if (res && res?.data) {
             this.userSearchInProgress = false;
-            this.users = res.data;
-            this.userPaginationInfo.itemCount = res.meta.itemCount;
+            this.users = res?.data;
+            this.userPaginationInfo.itemCount = res?.meta?.itemCount;
           }
         });
     }
