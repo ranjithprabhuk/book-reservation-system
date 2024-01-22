@@ -16,7 +16,7 @@ import { UpdatePasswordDto } from './dto/update-password.dto';
 @Controller('auth')
 @ApiTags('Auth Management')
 export class AuthController {
-  constructor(private readonly _authService: AuthService) {}
+  constructor(private readonly _authService: AuthService) { }
 
   @Post('/signup')
   @HttpCode(HttpStatus.OK)
@@ -27,9 +27,8 @@ export class AuthController {
     const { access_token, password, ...rest } = await this._authService.signup(
       signupDto,
     );
-    response.cookie('jwt', access_token, { httpOnly: true });
-    response.cookie('isLoggedIn', true, { httpOnly: false });
 
+    response.cookie('jwt', access_token, { httpOnly: true });
     return { ...rest };
   }
 
@@ -46,8 +45,16 @@ export class AuthController {
     const { password, ...rest } = user;
 
     response.cookie('jwt', access_token, { httpOnly: true });
-    response.cookie('isLoggedIn', true, { httpOnly: false });
     return { ...rest };
+  }
+
+  @Post('/loginout')
+  @HttpCode(HttpStatus.OK)
+  async logout(
+    @Res({ passthrough: true }) response,
+  ) {
+    response.cookie('jwt', '', { httpOnly: true });
+    return 'Success';
   }
 
   @Post('/update-password')

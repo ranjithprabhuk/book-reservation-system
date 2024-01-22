@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { LoginInput } from './interface/login.interface';
 import { RegisterInput } from './interface/register.interface';
 import { ToastService } from '../shared/toast/toast.service';
+import { removeCookie, setCookie } from 'typescript-cookie';
 
 @Injectable()
 export class AuthService {
@@ -15,9 +16,10 @@ export class AuthService {
     headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json'),
+    withCredentials: true,
   };
 
-  constructor(private _http: HttpClient, private _toastService: ToastService) {}
+  constructor(private _http: HttpClient, private _toastService: ToastService) { }
 
   private handleError = (error: any) => {
     this._toastService.handleError(error);
@@ -28,7 +30,10 @@ export class AuthService {
     return this._http
       .post<User>(`${this.apiurl}/login`, loginPayload, this.httpOptions)
       .pipe(
-        tap((data) => data),
+        tap((data: any) => {
+          setCookie('jwt', data.access_token);
+          return data;
+        }),
         catchError(this.handleError)
       );
   }
@@ -37,7 +42,22 @@ export class AuthService {
     return this._http
       .post<User>(`${this.apiurl}/signup`, registerPayload, this.httpOptions)
       .pipe(
-        tap((data) => data),
+        tap((data: any) => {
+          setCookie('jwt', data.access_token);
+          return data;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  logout(): Observable<User> {
+    return this._http
+      .post<User>(`${this.apiurl}/logout`, this.httpOptions)
+      .pipe(
+        tap((data: any) => {
+          removeCookie('jwt');
+          return data;
+        }),
         catchError(this.handleError)
       );
   }
