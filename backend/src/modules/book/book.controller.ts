@@ -30,9 +30,9 @@ export class BookController {
     return this.bookService.create(createBookDto);
   }
 
-  @Post('/seed-user-data')
+  @Post('/seed-book-data')
   @HttpCode(HttpStatus.OK)
-  loadUserData() {
+  loadBookData() {
     return this.bookService.loadBooks();
   }
 
