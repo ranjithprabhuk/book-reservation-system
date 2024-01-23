@@ -70,6 +70,7 @@ export class BookService {
             'name',
             'description',
             'ISBN',
+            'author'
           ])
         : '';
 
