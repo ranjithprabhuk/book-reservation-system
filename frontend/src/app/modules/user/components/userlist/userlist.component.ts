@@ -28,6 +28,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   };
   public users$: Subscription | null = null;
   public inActivateUser$: Subscription | null = null;
+  public makeAdmin$: Subscription | null = null;
   public users: User[] = [];
   public userSearchInProgress: boolean = false;
 
@@ -73,6 +74,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       .then((isConfirmed) => {
         if (isConfirmed) {
           this.inactivateUser(this.selectedUser);
+          this.selectedUser = '';
         }
       })
       .catch((err) => (this.selectedUser = ''));
@@ -96,6 +98,40 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
   }
 
+  public giveAdminAccess(userInfo: User) {
+    this.selectedUser = userInfo.id;
+    const modalRef = this._ngModal.open(ConfirmationModalComponent);
+    modalRef.componentInstance.header = 'Admin access Confirmation?';
+    modalRef.componentInstance.message = `Are you sure you want to give admin access to the user ${userInfo.firstName} ${userInfo.lastName}?`;
+
+    modalRef.result
+      .then((isConfirmed) => {
+        if (isConfirmed) {
+          this.makeAdmin(this.selectedUser);
+          this.selectedUser = '';
+        }
+      })
+      .catch((err) => (this.selectedUser = ''));
+  }
+
+  private makeAdmin(userId: string) {
+    this.userSearchInProgress = true;
+    if (this.userPaginationInfo) {
+      this.makeAdmin$ = this._userService
+        .giveAdminAccess(userId)
+        .subscribe((res: any) => {
+          if (res) {
+            this.searchUsersInfo();
+            this._toastService.showToast(
+              'Successfully updated!',
+              'Admin access granted successfully',
+              ToastType.SUCCESS
+            );
+          }
+        });
+    }
+  }
+
   private getUserInfo() {
     this.user$ = this._localStorageService.myData$.subscribe((res) => {
       if (res && res.key === 'user' && res.value) {
@@ -112,5 +148,6 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.users$?.unsubscribe();
     this.user$?.unsubscribe();
     this.inActivateUser$?.unsubscribe();
+    this.makeAdmin$?.unsubscribe();
   }
 }

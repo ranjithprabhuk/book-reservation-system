@@ -42,13 +42,6 @@ export class UserController {
     return this.userService.findUserReservations(id);
   }
 
-  @Patch(':id')
-  @HttpCode(HttpStatus.OK)
-  @Auth(true, true, Role.USER)
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(id, updateUserDto);
-  }
-
   @Patch('/access/:id')
   @HttpCode(HttpStatus.OK)
   @Auth(true, false, Role.ADMIN)

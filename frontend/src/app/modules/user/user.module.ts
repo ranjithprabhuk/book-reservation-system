@@ -8,7 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './components/userlist/userlist.component';
 import { UserDetailsComponent } from './components/userdetails/userdetails.component';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbPaginationModule,
+  NgbTooltipModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -18,7 +21,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbTooltipModule,
   ],
   declarations: [UserListComponent, UserDetailsComponent],
   providers: [UserService],

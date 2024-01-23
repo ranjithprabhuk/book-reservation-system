@@ -59,20 +59,37 @@
           <td>{{ user.username }}</td>
           <td>
             <div class="d-flex">
-              <div class="px-2">
+              <div style="padding-right: 5px">
                 <button
                   type="button"
                   class="btn btn-sm btn-outline-danger"
-                  (click)="
-                    deleteUser(user)
-                  "
+                  placement="top"
+                  ngbTooltip="Delete user"
+                  (click)="deleteUser(user)"
                 >
                   <span class="fa fa-trash"></span>
                 </button>
               </div>
-              <div *ngIf="user.role === 'USER'">
-                <button type="button" class="btn btn-sm btn-outline-info" [routerLink]="'/app/user/' + user.id">
+              <div style="padding-right: 5px" *ngIf="user.role === 'USER'">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-info"
+                  placement="top"
+                  ngbTooltip="View user details"
+                  [routerLink]="'/app/user/' + user.id"
+                >
                   <span class="fa fa-eye"></span>
+                </button>
+              </div>
+              <div *ngIf="user.role === 'USER'">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-warning"
+                  placement="top"
+                  ngbTooltip="Give admin access"
+                  (click)="giveAdminAccess(user)"
+                >
+                  <span class="fa fa-unlock"></span>
                 </button>
               </div>
             </div>
