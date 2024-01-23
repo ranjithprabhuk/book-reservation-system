@@ -1,4 +1,4 @@
-import { Order } from '../../book/interface/book.interface';
+import { Order, Reservation } from '../../book/interface/book.interface';
 
 export interface User {
   id: string;
@@ -7,6 +7,7 @@ export interface User {
   username: string;
   isActive: boolean;
   role: string;
+  bookReservations?: Reservation[];
 }
 
 export interface SearchUserInput {

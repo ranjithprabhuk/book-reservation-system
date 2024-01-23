@@ -71,7 +71,7 @@
                 </button>
               </div>
               <div *ngIf="user.role === 'USER'">
-                <button type="button" class="btn btn-sm btn-outline-info">
+                <button type="button" class="btn btn-sm btn-outline-info" [routerLink]="'/app/user/' + user.id">
                   <span class="fa fa-eye"></span>
                 </button>
               </div>

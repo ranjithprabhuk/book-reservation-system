@@ -37,9 +37,9 @@ export class UserController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  @Auth(true, true, Role.USER)
+  @Auth(true, false, Role.USER)
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+    return this.userService.findUserReservations(id);
   }
 
   @Patch(':id')

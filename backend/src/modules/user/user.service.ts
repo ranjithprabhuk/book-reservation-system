@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
@@ -87,6 +91,31 @@ export class UserService {
       }
       const response = this._userRepository.findOne({ where: [{ id }] });
       return response;
+    } catch (e) {
+      throw new InternalServerErrorException(e);
+    }
+  }
+
+  findUserReservations(userId: string) {
+    try {
+      if (!userId) {
+        throw new ValidationError(
+          'User ID is required to get the user information',
+        );
+      }
+      const queryBuilder = this._userRepository.createQueryBuilder('user');
+
+      const user = queryBuilder
+        .leftJoinAndSelect('user.bookReservations', 'reservation')
+        .leftJoinAndSelect('reservation.book', 'book')
+        .where('user.id = :userId', { userId })
+        .getOne();
+
+      if (!user) {
+        throw new NotFoundException(`User with ID ${userId} not found`);
+      }
+
+      return user;
     } catch (e) {
       throw new InternalServerErrorException(e);
     }

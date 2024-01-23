@@ -1,1 +1,68 @@
-<div>User Details</div>
+<section class="p-2">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/app/user">User</a>
+            </li>
+            <li
+              class="breadcrumb-item active"
+              aria-current="page"
+              *ngIf="member"
+            >
+              User Details : {{ member.firstName + " " + member.lastName }}
+            </li>
+            <li class="breadcrumb-item active" *ngIf="member">
+              Book Reservations
+            </li>
+          </ol>
+        </nav>
+        <div>
+          <table class="table table-hover table-bordered">
+            <thead class="table-primary">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">From Date</th>
+                <th scope="col">To Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let reservation of member?.bookReservations;
+                  let i = index
+                "
+              >
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                  <a [routerLink]="'/app/book/' + reservation.book.id">
+                    {{ reservation.book.name }}
+                  </a>
+                </td>
+                <td>{{ reservation.fromDate | date : "dd/MMM/yyyy" }}</td>
+                <td>{{ reservation.toDate | date : "dd/MMM/yyyy" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          *ngIf="
+            !isApiCallInProgress &&
+            (!member?.bookReservations ||
+              member?.bookReservations?.length === 0)
+          "
+        >
+          This user has not made any book reservations yet.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="overlay-spinner" *ngIf="isApiCallInProgress">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>

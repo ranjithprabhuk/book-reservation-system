@@ -27,6 +27,6 @@ export class User extends AppBaseEntity {
   @Column({ select: false })
   password: string;
 
-  @OneToMany(() => Reservation, (bookReservation) => bookReservation.user)
+  @OneToMany(() => Reservation, (bookReservation) => bookReservation.user, {eager: true})
   bookReservations: Reservation[];
 }
