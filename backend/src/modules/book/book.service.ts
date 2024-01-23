@@ -14,7 +14,7 @@ import { SqlUtility } from 'src/shared/utility/sql.utility';
 export class BookService {
   constructor(
     @InjectRepository(Book) private _bookRepository: Repository<Book>,
-  ) { }
+  ) {}
 
   create(createBookDto: CreateBookDto) {
     try {
@@ -50,10 +50,10 @@ export class BookService {
       const queryBuilder = this._bookRepository.createQueryBuilder('book');
       const whereClause = pageOptionsDto.searchText
         ? SqlUtility.getSearchTextWhereClause('book', [
-          'name',
-          'description',
-          'ISBN',
-        ])
+            'name',
+            'description',
+            'ISBN',
+          ])
         : '';
 
       queryBuilder
@@ -64,7 +64,7 @@ export class BookService {
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)
         .setParameters({
-          searchText: `%${pageOptionsDto.searchText}%`,
+          searchText: `%${decodeURIComponent(pageOptionsDto.searchText)}%`,
           isActive: true,
         });
 
@@ -92,9 +92,20 @@ export class BookService {
         .leftJoinAndSelect('book.bookReservations', 'reservation')
         .leftJoinAndSelect('reservation.user', 'user')
         .where('book.id = :bookId', { bookId: id })
-        .select(['book.id', 'book.name', 'book.author', 'book.ISBN', 'book.description', 'reservation.id', 'reservation.fromDate', 'reservation.toDate', 'user.id', 'user.firstName', 'user.lastName'])
+        .select([
+          'book.id',
+          'book.name',
+          'book.author',
+          'book.ISBN',
+          'book.description',
+          'reservation.id',
+          'reservation.fromDate',
+          'reservation.toDate',
+          'user.id',
+          'user.firstName',
+          'user.lastName',
+        ])
         .getOne();
-
     } catch (e) {
       throw new InternalServerErrorException(e);
     }

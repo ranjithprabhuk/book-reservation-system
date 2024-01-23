@@ -69,7 +69,9 @@ export class UserService {
         .orderBy(`user.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)
-        .setParameters({ searchText: `%${pageOptionsDto.searchText}%` });
+        .setParameters({
+          searchText: `%${decodeURIComponent(pageOptionsDto.searchText)}%`,
+        });
 
       const itemCount = await queryBuilder.getCount();
       const { entities } = await queryBuilder.getRawAndEntities();
