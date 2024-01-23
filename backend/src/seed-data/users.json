@@ -1,0 +1,37 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "username": "john_doe",
+    "password": "pass123",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "username": "jane_smith",
+    "password": "secret456",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Johnson",
+    "username": "bob_j",
+    "password": "p@ssword789",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Williams",
+    "username": "alice_w",
+    "password": "securePwd",
+    "role": "ADMIN"
+  },
+  {
+    "firstName": "Charlie",
+    "lastName": "Brown",
+    "username": "charlie_b",
+    "password": "strongPassword",
+    "role": "ADMIN"
+  }
+]

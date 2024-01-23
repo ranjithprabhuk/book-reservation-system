@@ -8,6 +8,7 @@ import {
   HttpCode,
   HttpStatus,
   Query,
+  Post,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -26,6 +27,12 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   findAll() {
     return this.userService.findAll();
+  }
+
+  @Post('/seed-user-data')
+  @HttpCode(HttpStatus.OK)
+  loadUserData() {
+    return this.userService.loadUsers();
   }
 
   @Get('/search')

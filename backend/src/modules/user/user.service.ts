@@ -13,6 +13,8 @@ import { PageOptionsDto } from 'src/shared/dto/page-options.dto';
 import { PageDto } from 'src/shared/dto/page.dto';
 import { PageMetaDto } from 'src/shared/dto/page-meta.dto';
 import { SqlUtility } from 'src/shared/utility/sql.utility';
+import * as userData from '../../seed-data/users.json';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -34,6 +36,26 @@ export class UserService {
       }
       const response = this._userRepository.save(createUserDto);
       return response;
+    } catch (e) {
+      throw new InternalServerErrorException(e);
+    }
+  }
+
+  async loadUsers() {
+    try {
+      const count = await this._userRepository.count();
+      if (count === 0) {
+        const saltOrRounds = parseInt(process.env.SALT_ROUND) || 10;
+        const users = await this._userRepository.create(userData);
+        for (const user of users) {
+          user.password = await bcrypt.hash(user.password, saltOrRounds);
+        }
+        await this._userRepository.save(users);
+
+        return 'Success';
+      } else {
+        return 'User information is already seeded in the system';
+      }
     } catch (e) {
       throw new InternalServerErrorException(e);
     }
