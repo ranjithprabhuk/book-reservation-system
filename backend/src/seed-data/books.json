@@ -1,0 +1,266 @@
+[
+  {
+    "name": "The Shifting Tides",
+    "description": "An epic fantasy adventure spanning multiple realms and magical conflicts.",
+    "ISBN": "978-1-234567-89-0",
+    "author": "Elena Waters"
+  },
+  {
+    "name": "Whispers of the Cosmos",
+    "description": "A sci-fi thriller exploring the mysteries of space and time travel.",
+    "ISBN": "978-3-456789-12-3",
+    "author": "Alex Quantum"
+  },
+  {
+    "name": "Beyond the Horizon",
+    "description": "A heartwarming tale of love and self-discovery set against a backdrop of coastal beauty.",
+    "ISBN": "978-9-876543-21-0",
+    "author": "Isabella Mariner"
+  },
+  {
+    "name": "Eternal Flames",
+    "description": "A historical romance novel that transports readers to the passionate world of Victorian England.",
+    "ISBN": "978-8-765432-10-9",
+    "author": "Victor Rosewood"
+  },
+  {
+    "name": "City of Shadows",
+    "description": "A gripping mystery set in a dark urban landscape, where secrets lurk around every corner.",
+    "ISBN": "978-6-543210-98-7",
+    "author": "Amanda Nightshade"
+  },
+  {
+    "name": "Chronicles of Eternity",
+    "description": "An otherworldly adventure where ancient prophecies and mythical creatures come to life.",
+    "ISBN": "978-5-432109-87-6",
+    "author": "Gabriel Silverwind"
+  },
+  {
+    "name": "Lost in the Echo",
+    "description": "A psychological thriller that explores the blurred lines between reality and imagination.",
+    "ISBN": "978-4-321098-76-5",
+    "author": "Olivia Mirage"
+  },
+  {
+    "name": "The Silent Symphony",
+    "description": "A poignant drama unraveling the stories of individuals connected by the power of music.",
+    "ISBN": "978-3-210987-65-4",
+    "author": "Julian Harmon"
+  },
+  {
+    "name": "The Enchanted Garden",
+    "description": "A whimsical tale of a magical garden and the extraordinary adventures it holds for those who enter.",
+    "ISBN": "978-2-109876-54-3",
+    "author": "Sophie Greenleaf"
+  },
+  {
+    "name": "A Thread of Destiny",
+    "description": "A historical fiction masterpiece weaving together the lives of diverse characters across time.",
+    "ISBN": "978-1-098765-43-2",
+    "author": "Marcus Weaver"
+  },
+  {
+    "name": "Echoes of Tomorrow",
+    "description": "A thought-provoking exploration of a future world shaped by technological advancements.",
+    "ISBN": "978-0-987654-32-1",
+    "author": "Luna Technica"
+  },
+  {
+    "name": "Stars in Her Eyes",
+    "description": "A romance novel set against the backdrop of a celestial phenomenon that changes lives forever.",
+    "ISBN": "978-9-876543-21-0",
+    "author": "Aiden Stardust"
+  },
+  {
+    "name": "Sands of Time",
+    "description": "An adventure-filled journey through ancient deserts, where hidden treasures and dangers await.",
+    "ISBN": "978-8-765432-10-9",
+    "author": "Amelia Nomad"
+  },
+  {
+    "name": "Infinite Horizons",
+    "description": "A collection of short stories exploring diverse worlds, each with its own unique wonders and challenges.",
+    "ISBN": "978-7-654321-09-8",
+    "author": "Harper Voyager"
+  },
+  {
+    "name": "Moonlit Melodies",
+    "description": "A poetic exploration of love, loss, and the profound impact of moonlit nights on the human soul.",
+    "ISBN": "978-6-543210-98-7",
+    "author": "Serena Moonlight"
+  },
+  {
+    "name": "Silent Whispers",
+    "description": "A mystery novel where cryptic messages lead a detective through a web of intrigue and deception.",
+    "ISBN": "978-5-432109-87-6",
+    "author": "Detective A. Whisper"
+  },
+  {
+    "name": "Threads of Fate",
+    "description": "An interwoven narrative connecting the lives of individuals in unexpected and profound ways.",
+    "ISBN": "978-4-321098-76-5",
+    "author": "R. Destiny"
+  },
+  {
+    "name": "Symphony of Colors",
+    "description": "An artistic journey through the vivid palette of life, exploring the emotions evoked by different hues.",
+    "ISBN": "978-3-210987-65-4",
+    "author": "Vivian Palette"
+  },
+  {
+    "name": "The Alchemist's Legacy",
+    "description": "A magical quest for an ancient alchemical artifact that holds the key to unimaginable power.",
+    "ISBN": "978-2-109876-54-3",
+    "author": "Elijah Alchemy"
+  },
+  {
+    "name": "Voyage of the Starship",
+    "description": "A space opera that takes readers on a thrilling journey through distant galaxies and cosmic conflicts.",
+    "ISBN": "978-1-098765-43-2",
+    "author": "Captain Nova"
+  },
+  {
+    "name": "Whispers from the Abyss",
+    "description": "A collection of chilling tales that explore the eerie and mysterious depths of the unknown.",
+    "ISBN": "978-0-987654-32-1",
+    "author": "Cassandra Shadows"
+  },
+  {
+    "name": "Sculptor's Symphony",
+    "description": "An artistic masterpiece that delves into the life and creations of a renowned sculptor.",
+    "ISBN": "978-9-876543-21-0",
+    "author": "Leon Sculptorelli"
+  },
+  {
+    "name": "Astral Odyssey",
+    "description": "A cosmic adventure where celestial beings embark on a quest to save the universe from impending doom.",
+    "ISBN": "978-8-765432-10-9",
+    "author": "Stella Celestia"
+  },
+  {
+    "name": "City of Dreams",
+    "description": "A surreal exploration of a metropolis where dreams and reality intertwine in unexpected ways.",
+    "ISBN": "978-7-654321-09-8",
+    "author": "Dreamweaver"
+  },
+  {
+    "name": "The Last Magician",
+    "description": "A tale of magic, betrayal, and redemption as the last remaining magician seeks to restore balance.",
+    "ISBN": "978-6-543210-98-7",
+    "author": "Merlin Arcane"
+  },
+  {
+    "name": "Whispers of the Wind",
+    "description": "A poetic journey through the whispers of the wind, echoing the tales of forgotten civilizations.",
+    "ISBN": "978-5-432109-87-6",
+    "author": "Zephyr Breeze"
+  },
+  {
+    "name": "Forgotten Realms",
+    "description": "An exploration of lost civilizations and the mysteries that shroud the remnants of ancient worlds.",
+    "ISBN": "978-4-321098-76-5",
+    "author": "Indiana Explorer"
+  },
+  {
+    "name": "The Quantum Code",
+    "description": "A techno-thriller unraveling the secrets of a revolutionary quantum encryption algorithm.",
+    "ISBN": "978-3-210987-65-4",
+    "author": "Dr. Quantum"
+  },
+  {
+    "name": "Harmony of Souls",
+    "description": "A musical journey that weaves together the stories of individuals connected by the power of harmony.",
+    "ISBN": "978-2-109876-54-3",
+    "author": "Melody Maestro"
+  },
+  {
+    "name": "Enigma of the Sphinx",
+    "description": "An archaeological adventure uncovering the secrets of an ancient civilization guarded by the Sphinx.",
+    "ISBN": "978-1-098765-43-2",
+    "author": "Dr. Sphinxologist"
+  },
+  {
+    "name": "The Hidden Code",
+    "description": "A gripping mystery where a hidden code holds the key to unraveling a web of conspiracies.",
+    "ISBN": "978-0-987654-32-1",
+    "author": "Cipher Sleuth"
+  },
+  {
+    "name": "Ripples in Time",
+    "description": "A time-traveling odyssey exploring the consequences of altering the fabric of time and space.",
+    "ISBN": "978-9-876543-21-0",
+    "author": "Temporal Voyager"
+  },
+  {
+    "name": "Luminous Legacy",
+    "description": "A futuristic saga where the legacy of a brilliant scientist shapes the destiny of a utopian society.",
+    "ISBN": "978-8-765432-10-9",
+    "author": "Dr. Lumina"
+  },
+  {
+    "name": "The Whimsical Wonders",
+    "description": "A collection of enchanting tales featuring whimsical characters and magical adventures.",
+    "ISBN": "978-7-654321-09-8",
+    "author": "Fantasia Weaver"
+  },
+  {
+    "name": "Serenade of Stars",
+    "description": "A cosmic love story that unfolds across galaxies, transcending time and space.",
+    "ISBN": "978-6-543210-98-7",
+    "author": "Stellar Serenader"
+  },
+  {
+    "name": "The Labyrinth of Shadows",
+    "description": "A dark fantasy journey through a labyrinthine realm where shadows conceal ancient secrets.",
+    "ISBN": "978-5-432109-87-6",
+    "author": "Shadowmaster"
+  },
+  {
+    "name": "Eclipse of the Mind",
+    "description": "A psychological thriller that delves into the depths of the human mind and the shadows that lurk within.",
+    "ISBN": "978-4-321098-76-5",
+    "author": "Mindscape Explorer"
+  },
+  {
+    "name": "The Celestial Oracle",
+    "description": "A mystical adventure where the celestial oracle guides a chosen hero through trials and destiny.",
+    "ISBN": "978-3-210987-65-4",
+    "author": "Oracle Seeker"
+  },
+  {
+    "name": "Mosaic of Dreams",
+    "description": "A tapestry of interconnected dreams, each revealing a fragment of the dreamer's inner world.",
+    "ISBN": "978-2-109876-54-3",
+    "author": "Dream Mosaicist"
+  },
+  {
+    "name": "The Quantum Garden",
+    "description": "A mind-bending exploration of a parallel dimension where the rules of reality are redefined.",
+    "ISBN": "978-1-098765-43-2",
+    "author": "Quantum Gardener"
+  },
+  {
+    "name": "Echoes of the Past",
+    "description": "An archaeological mystery uncovering ancient echoes that resonate through time and history.",
+    "ISBN": "978-0-987654-32-1",
+    "author": "Archaeo Echo"
+  },
+  {
+    "name": "Siren's Song",
+    "description": "A maritime adventure where the haunting melody of a siren's song leads sailors into uncharted waters.",
+    "ISBN": "978-9-876543-21-0",
+    "author": "Marina Siren"
+  },
+  {
+    "name": "Crimson Chronicles",
+    "description": "A dark fantasy saga exploring the consequences of forbidden magic in a world on the brink of chaos.",
+    "ISBN": "978-8-765432-10-9",
+    "author": "Scarlet Sorcerer"
+  },
+  {
+    "name": "Vortex of Visions",
+    "description": "A visionary journey through the swirling vortex of dreams, where reality and imagination merge.",
+    "ISBN": "978-7-654321-09-8",
+    "author": "Visionary Voyager"
+  }
+]

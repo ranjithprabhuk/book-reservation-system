@@ -30,6 +30,12 @@ export class BookController {
     return this.bookService.create(createBookDto);
   }
 
+  @Post('/seed-user-data')
+  @HttpCode(HttpStatus.OK)
+  loadUserData() {
+    return this.bookService.loadBooks();
+  }
+
   @Get()
   @HttpCode(HttpStatus.OK)
   @Auth(true, false, Role.USER)

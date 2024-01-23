@@ -9,6 +9,7 @@ import { PageOptionsDto } from 'src/shared/dto/page-options.dto';
 import { PageDto } from 'src/shared/dto/page.dto';
 import { PageMetaDto } from 'src/shared/dto/page-meta.dto';
 import { SqlUtility } from 'src/shared/utility/sql.utility';
+import * as bookData from '../../seed-data/books.json';
 
 @Injectable()
 export class BookService {
@@ -29,6 +30,22 @@ export class BookService {
       }
       const response = this._bookRepository.save(createBookDto);
       return response;
+    } catch (e) {
+      throw new InternalServerErrorException(e);
+    }
+  }
+
+  async loadBooks() {
+    try {
+      const count = await this._bookRepository.count();
+      if (count === 0) {
+        const books = await this._bookRepository.create(bookData);
+        await this._bookRepository.save(books);
+
+        return 'Success';
+      } else {
+        return 'Book information is already seeded in the system';
+      }
     } catch (e) {
       throw new InternalServerErrorException(e);
     }
