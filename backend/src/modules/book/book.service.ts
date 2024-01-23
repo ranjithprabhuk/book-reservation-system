@@ -75,8 +75,7 @@ export class BookService {
 
       queryBuilder
         .select()
-        .where(whereClause)
-        .andWhere('book.isActive = true')
+        .where(whereClause + ' (book.isActive = :isActive)')
         .orderBy(`book.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)

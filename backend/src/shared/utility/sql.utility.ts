@@ -10,6 +10,6 @@ export class SqlUtility {
       }
     }
 
-    return whereClause;
+    return '(' + whereClause + ') AND ';
   }
 }

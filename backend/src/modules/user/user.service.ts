@@ -86,13 +86,13 @@ export class UserService {
 
       queryBuilder
         .select()
-        .where(whereClause)
-        .andWhere('user.isActive = true')
+        .where(whereClause + '(user.isActive = :isActive)')
         .orderBy(`user.${pageOptionsDto.orderBy}`, pageOptionsDto.order)
         .skip(pageOptionsDto.skip)
         .take(pageOptionsDto.take)
         .setParameters({
           searchText: `%${decodeURIComponent(pageOptionsDto.searchText)}%`,
+          isActive: true,
         });
 
       const itemCount = await queryBuilder.getCount();
