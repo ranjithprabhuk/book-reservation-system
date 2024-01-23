@@ -13,6 +13,8 @@ import {
   ToastService,
   ToastType,
 } from 'src/app/modules/shared/toast/toast.service';
+import { ConfirmationModalComponent } from 'src/app/modules/shared/components/confirmation-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-booklist',
@@ -36,11 +38,13 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   public user$: Subscription | null = null;
   public isAdmin: boolean = false;
+  public selectedBook: string = '';
 
   constructor(
     private _bookService: BookService,
     private _localStorageService: LocalStorageService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private _ngModal: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +68,23 @@ export class BookListComponent implements OnInit, OnDestroy {
     }
   }
 
-  public inactivateBook(bookId: string) {
+  public deleteBook(bookInfo: Book) {
+    this.selectedBook = bookInfo.id;
+    const modalRef = this._ngModal.open(ConfirmationModalComponent);
+    modalRef.componentInstance.header = 'Delete Confirmation?';
+    modalRef.componentInstance.message = `Are you sure you want to delete the book ${bookInfo.name}?`;
+
+    modalRef.result
+      .then((isConfirmed) => {
+        if (isConfirmed) {
+          this.inactivateBook(this.selectedBook);
+          this.selectedBook = '';
+        }
+      })
+      .catch((err) => (this.selectedBook = ''));
+  }
+
+  private inactivateBook(bookId: string) {
     this.bookSearchInProgress = true;
     if (this.bookPaginationInfo) {
       this.inActivateBook$ = this._bookService

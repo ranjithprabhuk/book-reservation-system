@@ -47,24 +47,6 @@ export class ReservationService {
         throw new NotFoundException(`Book with ID ${bookId} not found.`);
       }
 
-      // Check for existing reservations within the selected date range
-      // const existingReservations = await this._reservationRepository.find({
-      //   // @ts-ignore
-      //   where: (qb) => {
-      //     qb.andWhere(
-      //       new Brackets((b) => {
-      //         b.orWhere({
-      //           book,
-      //           toDate: Between(fromDate, toDate),
-      //         });
-      //         b.orWhere({
-      //           book,
-      //           fromDate: Between(fromDate, toDate),
-      //         });
-      //       }),
-      //     );
-      //   },
-      // });
       const queryBuilder =
         this._reservationRepository.createQueryBuilder('reservation');
       const existingReservations = await queryBuilder
