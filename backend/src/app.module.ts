@@ -21,7 +21,7 @@ import { Reservation } from './modules/reservation/entities/reservation.entity';
       port: parseInt(process.env.DB_PORT) || 3306,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: 'test1',
+      database: 'book-reservation',
       entities: [Book, User, Reservation],
       synchronize: true,
     }),

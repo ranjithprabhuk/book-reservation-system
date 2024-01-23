@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Illumina
+      MYSQL_DATABASE: book-reservation
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Illumina
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
